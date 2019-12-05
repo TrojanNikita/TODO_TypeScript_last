@@ -1,8 +1,7 @@
-import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,TOGGLE_ALL,TOGGLE_TODO} from './../constants/actions';
+import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,TOGGLE_ALL,TOGGLE_TODO} from '../constants/actions';
 import { StoreStructure } from '../entities/StoreStructure';
 
-import { ActionTypeTodo } from './../entities/ActionType';
-import { Reducer } from 'redux';
+import { ActionTypeTodo } from '../entities/ActionType';
 
 
 const initState: StoreStructure = {
@@ -10,7 +9,9 @@ const initState: StoreStructure = {
     maxId:100
 };
 
-export const todos: Reducer<any> = (state: StoreStructure=initState, action: ActionTypeTodo) => {
+export function TodoReduce (
+  state=initState, 
+  action: ActionTypeTodo): StoreStructure {
     switch (action.type) {
         case ADD_TODO:
           return {
@@ -66,4 +67,4 @@ export const todos: Reducer<any> = (state: StoreStructure=initState, action: Act
       }
 }
 
-export default todos;
+export default TodoReduce;

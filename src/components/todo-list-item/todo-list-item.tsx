@@ -50,8 +50,10 @@ const TodoListItem:React.FC<IItem>=({item,deleteTodo,toggleTodo,editTodo})=>{
                   deleteTodo(item.id):editTodo(item.id,newLabel);
             //меняем режим по нажатию кнопки редактирования 
             setEditMode(false);
-        }else{                     
-            setNewLabel(item.label);
+        }else{ 
+            //Относится к СПРОСИТЬ, хотелось бы убрать
+            if(item.label)                    
+                    setNewLabel(item.label);
             //меняем режим по нажатию кнопки редактирования             
             setEditMode(true);
             //выводим курсор по нажатию кнопки редактирования

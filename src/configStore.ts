@@ -5,7 +5,7 @@ import { StoreStructure } from './entities/StoreStructure';
 //Сохранение состояния во время перезагрузки
 import { save, load } from "redux-localstorage-simple"
 
-import rootReducer from './reducers';
+import {rootReducer} from './reducers';
 
 const logger = createLogger();
 

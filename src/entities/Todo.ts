@@ -1,5 +1,7 @@
 export interface Todo {
     id: number;
-    label: string;
-    done: boolean;
+    label: string|undefined;
+    done: boolean|undefined;
 }
+
+//СПРОСИТЬ: undefined надо убрать, но редюсер не позволяет

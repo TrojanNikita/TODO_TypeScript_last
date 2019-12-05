@@ -41,11 +41,11 @@ const AddItem:React.FC<AddProp>=({addTodo})=> {
 
 
 const mapDispatchToProps = (dispatch: Dispatch<ActionTypeTodo>) =>
-bindActionCreators(
-  {
-    addTodo: addTodo,
-  },
-  dispatch
+    bindActionCreators(
+      {
+        addTodo: addTodo,
+      },
+      dispatch
 );
 
 

@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect';
 
-import {StoreStructure} from './../entities/StoreStructure';
+
+import {RootState} from '../reducers/index';
 
 
 
-
-export const getTodos = (state:any) => state.todos.todos;
+export const getTodos = (state:RootState) => state.TodoReduce.todos;
 
 export const selectAllTodos = createSelector(
     getTodos,
-    allTodos => allTodos
+    (allTodos) => allTodos
 );
 
 export const selectActiveTodos = createSelector(
