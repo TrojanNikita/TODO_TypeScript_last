@@ -15,24 +15,24 @@ import './todo-list-item.scss';
 const TodoListItem:React.FC<ITodoListItem>=
 ({classNames,onInputClick,onSubmitItem, onEditClick, inputEl,inputValue,onLabelChange, isRead,editClassName, onDeleteClick})=>{
     return(
-        <form   className={classNames}
+        <form   className='item'
                 onSubmit={onSubmitItem}>
                 <div
-                    className="left"
+                    className='item__left'
                     onClick={onInputClick}>
                     <input
                         ref={inputEl} 
                         type='text'
-                        className='left-edit'
+                        className={classNames}
                         value={inputValue}
                         onChange={onLabelChange}
                         readOnly={isRead}
                     />
                 </div>
 
-                <div className="right">    
+                <div className="item__right">    
                     <button type="button"
-                        className="right-btn btn btn-outline-danger btn-sm float-right"
+                        className="item__right__btn btn btn-outline-danger btn-sm float-right"
                         onClick={onDeleteClick}>
                         <i className="my-icon fa fa-trash-o" />
                     </button>
@@ -77,8 +77,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
     //В случае повторного нажатия, если строка не стала пустой изменяем
     //в глобальном хранилище todo, иначе вообще удаляем пустую строку
     const classNameEdit=editMode?
-    "right-btn btn btn-outline-dark btn-sm float-right active":
-    "right-btn btn btn-outline-dark btn-sm float-right"
+    "item__right__btn btn btn-outline-dark btn-sm float-right active":
+    "item__right__btn btn btn-outline-dark btn-sm float-right"
 
     const onLabelChange=useCallback((e:React.FormEvent<HTMLInputElement>)=>{
         setNewLabel(e.currentTarget.value);
@@ -138,8 +138,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 
     //Для cross out: зачеркиваем, если выполнена 
     //и не включен edit mode
-    let classNames='todo-list-item';
-    if (item.done&&!editMode) classNames+=' done';
+    let classNames='item__left__edit';
+    if (item.done&&!editMode) classNames+='--done';
 
 //classNames,onInputClick,onSubmitItem, onEditClick, inputEl,inputValue,onLabelChange, isRead,editClassName, onDeleteClick
 

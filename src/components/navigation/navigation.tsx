@@ -14,9 +14,9 @@ export interface IProps {
 const NavigationConnect: React.FC<IProps>=props=>{
 
     //По-умолчанию All
-    
+    //localStorage.getItem('route')
 
-    const [activeLink, setActiveLink]=useState(localStorage.getItem('route'));
+    const [activeLink, setActiveLink]=useState('1');
 
     // const handleClick=(id:string='1') =>()=> {
     //     setActiveLink(id);
@@ -28,8 +28,8 @@ const NavigationConnect: React.FC<IProps>=props=>{
     const handleClick=useCallback(
         (id:string) =>()=> {
             setActiveLink(id)
-            localStorage.removeItem("route");
-            localStorage.setItem('route', id)
+            // localStorage.removeItem("route");
+            // localStorage.setItem('route', id)
         },
         [],
     )

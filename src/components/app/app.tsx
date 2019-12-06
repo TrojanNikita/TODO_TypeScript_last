@@ -24,7 +24,7 @@ import './app.scss';
 
 const App : React.FC= () => {
   return (
-    <div className="todo-app">
+    <div className="app-form">
       <Router history={history}>
         <div>
             <AppHeader/>

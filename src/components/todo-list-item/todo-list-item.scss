@@ -1,39 +1,61 @@
-.todo-list-item {
+
+
+
+
+@mixin square ($width, $height) {
+    width: $width ;
+    height: $height;  
+}
+
+
+
+.item {
   font-size: 1.25rem;
+
+  &__left{
+        margin-left: 1.25rem;
+      width: 70%;
+      line-height: 35px;
+      cursor: pointer;
+      border: 5px;
+      user-select: none;
+      display: inline-block;
+
+      &__edit{
+            outline:none;
+            border:none;
+            width:100%;
+            cursor: pointer;
+            
+            &--done{
+              outline:none;
+              border:none;
+              width:100%;
+              text-decoration: line-through;
+            }
+      }
+  }
+
+  &__right{
+    width: 20%;
+    position:absolute;
+    display: inline-block;
+
+    &__btn{
+      width: 30px;
+      height: 30px;
+      margin: 3px;
+      text-align: center;      
+    }
+
+
+
+
+  }
+
+  // .item.done .item__left .item__left__edit{
+  //   text-decoration: line-through;
+  // }
 }
 
 
-
-.todo-list-item .left {
-  margin-left: 1.25rem;
-  width: 70%;
-  line-height: 35px;
-  cursor: pointer;
-  border: 5px;
-  user-select: none;
-  display: inline-block;
-}
-
-.todo-list-item .left .left-edit {
-  outline:none;
-  border:none;
-   width:100%;
-   cursor: pointer;
-}
-.todo-list-item .right{
-  width: 20%;
-  position:absolute;
-  display: inline-block;
-}
-
-.todo-list-item .right .right-btn{
-  width: 30px;
-  height: 30px;
-  margin: 3px;
-  text-align: center;
-}
-
-.todo-list-item.done .left .left-edit{
-
-  text-decoration: line-through;
-}

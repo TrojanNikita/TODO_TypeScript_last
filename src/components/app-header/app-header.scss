@@ -1,15 +1,21 @@
-.app-header {
-    align-items: flex-end;
-  }
-  
-  
-  .app-header-title {
-    font-size: 3.0rem;
-    flex-grow: 1;
-  }
-  
-  .app-header-subtitle {
-    font-size: 1.0rem;
-    color: grey;
-  }
-  
+// $color_title:black;
+// $color_subtitle:grey;
+
+@import './../../styles/base';
+
+.header {
+
+
+    align-items: flex-end; 
+
+    &__title {
+      font-size: 3.0rem;
+      flex-grow: 1;
+      color:$color_title;
+    }
+    
+    &__subtitle {
+      font-size: 1.0rem;
+      color: $color_subtitle;
+    }
+}

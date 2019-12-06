@@ -13,11 +13,11 @@ interface AppProps{
 
 const AppHeader: React.FC<AppProps>=({activeCount=0})=>{
   return(
-    <div className="app-header d-flex">
-        <h1 className="app-header-title d-flex">
+    <div className="header d-flex">
+        <h1 className="header__title d-flex">
           todos
         </h1>
-        <h2 className="app-header-subtitle d-flex">
+        <h2 className="header__subtitle d-flex">
           {activeCount} more to do
         </h2>
     </div>
