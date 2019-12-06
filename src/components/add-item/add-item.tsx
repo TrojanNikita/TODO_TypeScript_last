@@ -31,7 +31,7 @@ const AddItem:React.FC<AddProp>=({addTodo})=> {
         <form className='add-item'
               onSubmit={onSubmit}>
               <input  type='text'
-                      className='add-item-text form-control'
+                      className='add-item__text form-control'
                       onChange={onLabelChange}
                       placeholder='What needs to be done?'
                       value={label}/>

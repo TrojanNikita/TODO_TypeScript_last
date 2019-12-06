@@ -20,14 +20,14 @@ const Tools: React.FC<ToolsProps>=({doneCount, toggleAll, deleteCompleted})=>{
   //Т,к, по сути меняется только оно
     return(
         <div className="tools btn-group">
-          <button className="tools-button-left"
+          <button className="tools__leftbtn"
                   onClick={()=>toggleAll(doneCount===0)}>
                   {
                     (doneCount===0)?
                     'Select All':'Unselect All'
                   }
           </button>
-          <button className="tools-button-right"
+          <button className="tools__rightbtn"
                   onClick={deleteCompleted}>
                   Delete completed
           </button>

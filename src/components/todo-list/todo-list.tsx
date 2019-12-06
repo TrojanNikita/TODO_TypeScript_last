@@ -2,7 +2,7 @@ import React from 'react';
 import TodoListItem from '../todo-list-item';
 
 import  Todo  from "../../types/Todo";
-//import './todo-list.css';
+import './todo-list.scss';
 
 
 export interface ITodoList{
@@ -13,7 +13,7 @@ const TodoList= (props:ITodoList) => {
 
   const elements = props.data.map((item: Todo) => {
     return (
-      <li key={item.id} className="list-group-item">
+      <li key={item.id} className="todos__li list-group-item">
         <TodoListItem
             item={item}
         />
@@ -22,7 +22,7 @@ const TodoList= (props:ITodoList) => {
   });
 
   return (
-    <ul className="list-group todo-list">
+    <ul className="todos list-group">
       { elements }
     </ul>
   );

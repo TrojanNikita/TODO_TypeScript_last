@@ -1,5 +1,5 @@
 
-
+@import './../../index.scss';
 
 
 @mixin square ($width, $height) {
@@ -7,27 +7,37 @@
     height: $height;  
 }
 
+@mixin item-border(){
+
+  border:none;
+  outline:none;
+}
+
+
+
 
 
 .item {
-  font-size: 1.25rem;
+  width: 100%;
+  @include item-border();
+  cursor: pointer;
 
   &__left{
-        margin-left: 1.25rem;
-      width: 70%;
+      width: 80%;
       line-height: 35px;
       cursor: pointer;
-      border: 5px;
-      user-select: none;
+      border:none;
       display: inline-block;
+      outline:none;
 
       &__edit{
             outline:none;
             border:none;
             width:100%;
             cursor: pointer;
-            
+
             &--done{
+              cursor: pointer;
               outline:none;
               border:none;
               width:100%;
@@ -38,6 +48,8 @@
 
   &__right{
     width: 20%;
+    border:none;
+    background-color: white;
     position:absolute;
     display: inline-block;
 
@@ -53,9 +65,6 @@
 
   }
 
-  // .item.done .item__left .item__left__edit{
-  //   text-decoration: line-through;
-  // }
 }
 
 

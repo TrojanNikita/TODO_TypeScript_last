@@ -1,29 +1,38 @@
-.tools{
-    max-width: 400px;
-    min-width: 400px;
-    outline: none;
-    margin-top: 1.5rem;
-  }
-  
-  .tools-button-left{
-    color:grey;
-    border: none;
-    width: auto;
+@import './../../index.scss';
+
+
+@mixin tool_btn {
+  color:grey;
+  border: none;
   border:none;
-  outline: none;
+  outline: none;  
+  text-align: center;   
+  &:focus{
+    outline: none !important;
   }
-  .tools-button-right{
-    color:grey;
-    border:none;
+}
+
+
+.tools{
+  text-align: center;
+    width: 400px;
     outline: none;
-    margin-left: auto;
-    margin-right: 0;
-  }
-  
-  .tools-button-left:focus {
-    outline: none !important;
-  }
-  .tools-button-right:focus {
-    outline: none !important;
+    margin-top: 1rem;
+    background-color: $primary-background;
+
+    &__leftbtn{
+      width: 50%;
+        @include tool_btn();
+        background-color: $primary-background;        
+
+    }
+    &__rightbtn{
+      width: 50%;
+        @include tool_btn();
+        margin-left: auto;
+        margin-right: 0;
+        background-color: $primary-background;
+    }
+
   }
   
