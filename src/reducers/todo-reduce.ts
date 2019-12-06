@@ -19,7 +19,7 @@ export function TodoReduce (
             ...state.todos,
             {
               id: state.maxId+1,
-              label: action.label,
+              label: action.label||'',
               done: false
             }],
             maxId:state.maxId+1
@@ -39,7 +39,7 @@ export function TodoReduce (
           
             todos: state.todos.map(todo =>
                   (todo.id === action.id)
-                    ? {...todo, label:action.label}
+                    ? {...todo, label:action.label||''}
                     : todo
             ),
             maxId:state.maxId
@@ -48,7 +48,7 @@ export function TodoReduce (
             return {
           
               todos: state.todos.map(todo => {
-                return { ...todo, done: action.flag};
+                return { ...todo, done: action.flag||false};
               }),
               maxId:state.maxId
           }         
