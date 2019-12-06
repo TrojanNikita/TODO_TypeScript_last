@@ -1,6 +1,6 @@
 import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,
         TOGGLE_ALL,TOGGLE_TODO} from './../constants/actions';
-import {ActionTypeTodo} from './../entities/ActionType';
+import {ActionTypeTodo} from '../types/ActionType';
 
 export const addTodo = (label:string): ActionTypeTodo => {
     return {

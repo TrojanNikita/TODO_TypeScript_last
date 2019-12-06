@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './tools.scss';
 
 import { selectDoneLength} from './../../selectors/todo-selectors';
-import {ActionTypeTodo} from './../../entities/ActionType';
+import {ActionTypeTodo} from '../../types/ActionType';
 import { bindActionCreators, Dispatch } from 'redux';
 import {toggleAll,deleteCompleted} from '../../actions/actionTodo';
 import {RootState} from '../../reducers';

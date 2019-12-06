@@ -28,4 +28,4 @@ const AppHeader: React.FC<AppProps>=({activeCount=0})=>{
 //т,е, перерисовываем , когда меняется кол-во активных
 export default connect((state:RootState) => ({
     activeCount:selectActiveLength(state)
-}))(React.memo(AppHeader));
+}))(AppHeader);

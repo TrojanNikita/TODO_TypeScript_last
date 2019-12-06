@@ -1,4 +1,4 @@
-export interface Todo {
+export default interface Todo {
     id: number;
     label: string|undefined;
     done: boolean|undefined;

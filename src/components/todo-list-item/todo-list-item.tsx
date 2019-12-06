@@ -1,46 +1,78 @@
-import React, {  useState,useRef, FormEvent } from "react";
-import {connect} from 'react-redux';
-import {ActionTypeTodo} from './../../entities/ActionType';
-import {toggleTodo,deleteTodo, editTodo} from '../../actions/actionTodo';
+import React, {  useState,useRef, FormEvent, useCallback } from "react";
 import { bindActionCreators, Dispatch } from 'redux';
-import { Todo } from "../../entities/Todo";
+import {connect} from 'react-redux';
+
+import {ActionTypeTodo} from '../../types/ActionType';
+import {toggleTodo,deleteTodo, editTodo} from '../../actions/actionTodo';
+import  Todo  from "../../types/Todo";
+import ITodoListItem from '../../types/TodoListItem'
 import './todo-list-item.scss';
 
 
 
 
 
+const TodoListItem:React.FC<ITodoListItem>=
+({classNames,onInputClick,onSubmitItem, onEditClick, inputEl,inputValue,onLabelChange, isRead,editClassName, onDeleteClick})=>{
+    return(
+        <form   className={classNames}
+                onSubmit={onSubmitItem}>
+                <div
+                    className="left"
+                    onClick={onInputClick}>
+                    <input
+                        ref={inputEl} 
+                        type='text'
+                        className='left-edit'
+                        value={inputValue}
+                        onChange={onLabelChange}
+                        readOnly={isRead}
+                    />
+                </div>
+
+                <div className="right">    
+                    <button type="button"
+                        className="right-btn btn btn-outline-danger btn-sm float-right"
+                        onClick={onDeleteClick}>
+                        <i className="my-icon fa fa-trash-o" />
+                    </button>
+                    <button type="button"
+                        className={editClassName}
+                        onClick={onEditClick}>
+                        <i className="my-icon fa fa-pencil" />
+                    </button>
+                </div>
+                
+        </form>
+    )
+}
 
 
 
 
-//Тип Пропса
-type IItem = ReturnType<typeof mapDispatchToProps> & {
+
+
+//Контейнеру поступает только тудушка: id, label, done
+type IItemContainer = ReturnType<typeof mapDispatchToProps> & {
     item: Todo;
   };
 
 
-const TodoListItem:React.FC<IItem>=({item,deleteTodo,toggleTodo,editTodo})=>{
+const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTodo,editTodo})=>{
 
     //Включение режима редактирования
     //По-умолчанию выкл
     const [editMode,setEditMode]=useState(false);
-
+    //будем изменять newLabel только при переходе в edit mode
+    const [newLabel, setNewLabel]=useState('');
     //Будем использовать для получения ссылки 
     //на редактируемый инпут
     const inputEl = useRef<HTMLInputElement>(null);
 
 
-    //будем изменять newLabel только при переходе в edit mode
-    const [newLabel, setNewLabel]=useState('');
-    const onLabelChange=(e:React.FormEvent<HTMLInputElement>)=>{
-      setNewLabel(e.currentTarget.value);
-    };
-
-
 
     //САМОЕ ВАЖНОЕ!!!!
-    //Нажатие кнопки редактирования,
+    //Смена режима редактирования,
     //Если первый раз, то переходим в edit mode, предварительно положив в новый заголовок старый
     //В случае повторного нажатия, если строка не стала пустой изменяем
     //в глобальном хранилище todo, иначе вообще удаляем пустую строку
@@ -48,8 +80,14 @@ const TodoListItem:React.FC<IItem>=({item,deleteTodo,toggleTodo,editTodo})=>{
     "right-btn btn btn-outline-dark btn-sm float-right active":
     "right-btn btn btn-outline-dark btn-sm float-right"
 
-    const onEditClick=(e:FormEvent)=>{
-        e.preventDefault(); 
+    const onLabelChange=useCallback((e:React.FormEvent<HTMLInputElement>)=>{
+        setNewLabel(e.currentTarget.value);
+      },[]);
+
+
+
+    const editChange=(()=>{
+   //     e.preventDefault(); 
         if(editMode){
             console.log(newLabel);
             //если после изменения пустая тудушка, удаляем ее
@@ -71,7 +109,29 @@ const TodoListItem:React.FC<IItem>=({item,deleteTodo,toggleTodo,editTodo})=>{
                 inputEl.current.focus();
             } 
         }
-    };
+    })
+
+
+    const onInputClick=useCallback(()=>{
+        toggleTodo(item.id)
+    },[toggleTodo,item.id])
+
+    const onSubmitItem=useCallback(((event:FormEvent)=>{
+        if(event)
+            event.preventDefault();
+        editChange()
+    }),[editChange])
+
+    const onEditClick=useCallback(()=>{
+        editChange()
+    },[editChange])
+
+    const onDeleteClick=useCallback(()=>{
+        deleteTodo(item.id)
+    },[deleteTodo,item.id])
+
+
+
 
 
 
@@ -81,45 +141,22 @@ const TodoListItem:React.FC<IItem>=({item,deleteTodo,toggleTodo,editTodo})=>{
     let classNames='todo-list-item';
     if (item.done&&!editMode) classNames+=' done';
 
-
+//classNames,onInputClick,onSubmitItem, onEditClick, inputEl,inputValue,onLabelChange, isRead,editClassName, onDeleteClick
 
     return(
-        <form   className={classNames}
-                onSubmit={onEditClick}>
-                <div
-                    className="left"
-                    onClick={ ()=>toggleTodo(item.id)}>
-                    <input
-                        ref={inputEl} 
-                        type='text'
-                        className='left-edit'
-                        value={!editMode?item.label:newLabel}
-                        onChange={onLabelChange}
-                        onSubmit={onEditClick}
-                        readOnly={!editMode}
-                    />
-                </div>
-
-                <div className="right">    
-                    <button type="button"
-                        className="right-btn btn btn-outline-danger btn-sm float-right"
-                        onClick={()=>deleteTodo(item.id)}>
-                        <i className="my-icon fa fa-trash-o" />
-                    </button>
-                    <button type="button"
-                        className={classNameEdit}
-                        onClick={onEditClick}>
-                        <i className="my-icon fa fa-pencil" />
-                    </button>
-                </div>
-                
-        </form>
+        <TodoListItem
+                        classNames={classNames}
+                        onSubmitItem={onSubmitItem}
+                        onLabelChange={onLabelChange}
+                        onEditClick={onEditClick}
+                        inputValue={!editMode?item.label:newLabel}
+                        onInputClick={onInputClick}
+                        inputEl={inputEl}
+                        isRead={!editMode}
+                        onDeleteClick={onDeleteClick}
+                        editClassName={classNameEdit}
+        />
     )
-
-
-
-
-
 };
 
 
@@ -136,5 +173,5 @@ bindActionCreators(
 );
 
 
-export default connect(null,mapDispatchToProps)(TodoListItem);
+export default connect(null,mapDispatchToProps)(TodoListItemContainer);
 

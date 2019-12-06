@@ -8,6 +8,10 @@ import App from './components/app/app';
 
 import configStore from './configStore';
 
+//по-умолчанию включена вкладка all
+//localStorage.setItem('route','1')
+if(!localStorage.getItem('route'))
+            localStorage.setItem('route', '1')
 
 const store = configStore();
 

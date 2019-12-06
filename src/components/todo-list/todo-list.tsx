@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoListItem from '../todo-list-item';
 
-import { Todo } from "../../entities/Todo";
+import  Todo  from "../../types/Todo";
 //import './todo-list.css';
 
 
@@ -29,4 +29,4 @@ const TodoList= (props:ITodoList) => {
 };
 
 
-export default TodoList;
+export default React.memo(TodoList);

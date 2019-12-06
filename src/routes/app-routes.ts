@@ -3,7 +3,7 @@ import {All,Active,Done} from '../components/containers/containers';
 
 
 export interface AppRoute {
-    id: number;
+    id: string;
     path: string;
     component: any;
     description: string;
@@ -11,21 +11,21 @@ export interface AppRoute {
 }
 export const AppRoutes: AppRoute[] = [
     {
-        id:1,
+        id:'1',
         path: ALL,
         component: All,
         description: 'All',
         exact: true
     },
     {
-        id:2,
+        id:'2',
         path: ACTIVE,
         component: Active,
         description: 'Active',
         exact: true
     },
     {
-        id:3,
+        id:'3',
         path: DONE,
         component: Done,
         description: 'Done',

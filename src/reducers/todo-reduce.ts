@@ -1,7 +1,7 @@
 import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,TOGGLE_ALL,TOGGLE_TODO} from '../constants/actions';
-import { StoreStructure } from '../entities/StoreStructure';
+import  StoreStructure  from '../types/StoreStructure';
 
-import { ActionTypeTodo } from '../entities/ActionType';
+import { ActionTypeTodo } from '../types/ActionType';
 
 
 const initState: StoreStructure = {
