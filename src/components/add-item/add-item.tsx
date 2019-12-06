@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useCallback} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
@@ -14,9 +14,9 @@ const AddItem:React.FC<AddProp>=({addTodo})=> {
 
   const [label, setLabel]=useState('');
 
-  const onLabelChange=(e:React.FormEvent<HTMLInputElement>)=>{
+  const onLabelChange=useCallback((e:React.FormEvent<HTMLInputElement>)=>{
     setLabel(e.currentTarget.value);
-  };
+  },[label])
 
   //если label не пустой добавляем тудушку
   const onSubmit=(e:React.FormEvent)=>{
@@ -49,4 +49,4 @@ const mapDispatchToProps = (dispatch: Dispatch<ActionTypeTodo>) =>
 );
 
 
-export default connect(null,mapDispatchToProps)(AddItem);
+export default connect(null,mapDispatchToProps)(React.memo(AddItem));

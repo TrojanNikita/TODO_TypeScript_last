@@ -21,3 +21,14 @@ export const selectDoneTodos = createSelector(
     getTodos,
     allTodos => allTodos.filter((el)=>el.done)
 );
+
+
+export const selectDoneLength=createSelector(
+    getTodos,
+    allTodos => allTodos.filter((el)=>el.done).length
+);
+
+export const selectActiveLength=createSelector(
+    getTodos,
+    allTodos => allTodos.filter((el)=>!el.done).length
+);

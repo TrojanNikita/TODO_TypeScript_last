@@ -7,6 +7,13 @@ import { Todo } from "../../entities/Todo";
 import './todo-list-item.scss';
 
 
+
+
+
+
+
+
+
 //Тип Пропса
 type IItem = ReturnType<typeof mapDispatchToProps> & {
     item: Todo;

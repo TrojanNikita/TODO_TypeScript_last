@@ -1,0 +1,29 @@
+.tools{
+    max-width: 400px;
+    min-width: 400px;
+    outline: none;
+    margin-top: 1.5rem;
+  }
+  
+  .tools-button-left{
+    color:grey;
+    border: none;
+    width: auto;
+  border:none;
+  outline: none;
+  }
+  .tools-button-right{
+    color:grey;
+    border:none;
+    outline: none;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .tools-button-left:focus {
+    outline: none !important;
+  }
+  .tools-button-right:focus {
+    outline: none !important;
+  }
+  
