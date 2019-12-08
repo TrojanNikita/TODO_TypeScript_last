@@ -1,33 +1,22 @@
 
 import React,{useState, useCallback} from 'react';
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter,RouteComponentProps } from "react-router-dom";
 import { AppRoutes, AppRoute } from '../../routes/app-routes';
 
 import './navigation.scss';
 
 
-export interface IProps {
-    history: any;
-}
 
 
-const NavigationConnect: React.FC<IProps>=props=>{
+const NavigationConnect:React.FC<RouteComponentProps>=({history}:RouteComponentProps)=>{
 
-    //По-умолчанию All
-    //localStorage.getItem('route')
 
-    const [activeLink, setActiveLink]=useState('1');
-
-    // const handleClick=(id:string='1') =>()=> {
-    //     setActiveLink(id);
-    //     localStorage.removeItem("route");
-    //     localStorage.setItem('route', id)
-    // }
-
+    const [activeLink, setActiveLink]=useState(AppRoutes.find(
+        (route)=>(route.path===history.location.pathname)) );
 
     const handleClick=useCallback(
-        (id:string) =>()=> {
-            setActiveLink(id)
+        (route:AppRoute) =>()=> {
+            setActiveLink(route)
             // localStorage.removeItem("route");
             // localStorage.setItem('route', id)
         },
@@ -38,10 +27,10 @@ const NavigationConnect: React.FC<IProps>=props=>{
     return(
         <ul className='nav-bar row'>
             {AppRoutes.map((route: AppRoute) => (
-            <li className="nav-li col" key={route.id} onClick={handleClick(route.id)}>
+            <li className="nav-li col" key={route.id} onClick={handleClick(route)}>
                 <Link   to={route.path} 
                         className={
-                            (route.id === activeLink ? 
+                            (route === activeLink ? 
                                 linkClass+"active" : linkClass)
                         }>
                         {route.description}
@@ -54,4 +43,4 @@ const NavigationConnect: React.FC<IProps>=props=>{
 
 
   
-  export const Navigation= withRouter(NavigationConnect as any);
+  export const Navigation= withRouter(NavigationConnect);
