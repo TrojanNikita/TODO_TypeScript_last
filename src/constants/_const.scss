@@ -2,30 +2,41 @@ $form_width:500px;
 //$back_color:
 $primary_background:rgb(234, 217, 245);
 
+//Цвет списка
+$todo_color: ($primary_background)+5;
+
 $color_title:black;
 $color_subtitle:grey;
 
 $heigth_header:100px;
 $heigth_add_form:100px;
 
-$heigth_nav:70px;
+$heigth_nav:100px;
 
 //толщина заголовка
 $font-weight-header: 550;
 //толщина строки "кол-во активных дел"
 $font-weight-subheader: 550;
 
+//внутренний и внешний цвет
 @mixin color_btn($background, $text){
     color: $text;
     background-color: $background;
-  }
-  
-  @mixin border_btn ($clr,$count){
+}  
 
-    //     box-shadow: 0 0 0 3px $primary_background+10, 
-    //                 0 0 0 6px $primary_background+20,
-    //                 0 0 0 9px $primary_background+30;
-     @for $i from 1 through $count { 
-      box-shadow: 0 0 0 $i*3px $clr+$i*10;
+//рамка  
+@mixin border_btn ($clr,$count){
+    @for $i from 1 through $count { 
+        box-shadow: 0 0 0 $i*3px $clr+$i*2;
     }
+}
+
+@mixin item-border(){
+
+    border:none;
+    outline:none;
   }
+//border radius у формы для добавления
+//он же отступ от краев у списка
+$border-radius-add:$form_width/5;
+$list-padding:$border-radius-add/4+10;

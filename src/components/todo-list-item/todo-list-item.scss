@@ -1,5 +1,5 @@
 
-@import './../../index.scss';
+@import './../../constants/const';
 
 
 @mixin square ($width, $height) {
@@ -7,11 +7,7 @@
     height: $height;  
 }
 
-@mixin item-border(){
 
-  border:none;
-  outline:none;
-}
 
 
 
@@ -20,8 +16,10 @@
 .item {
   width: 100%;
   @include item-border();
+  border-bottom: 1px solid ($primary_background)-20;
   cursor: pointer;
-
+  @include color_btn($todo_color,$color_title);
+  
   &__left{
       width: 80%;
       line-height: 35px;
@@ -31,12 +29,14 @@
       outline:none;
 
       &__edit{
+        @include color_btn($todo_color,$color_title);
             outline:none;
             border:none;
             width:100%;
             cursor: pointer;
 
             &--done{
+              @include color_btn($todo_color,$color_title);
               cursor: pointer;
               outline:none;
               border:none;
@@ -47,9 +47,9 @@
   }
 
   &__right{
+    @include color_btn($todo_color,$color_title);
     width: 20%;
     border:none;
-    background-color: white;
     position:absolute;
     display: inline-block;
 

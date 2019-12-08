@@ -2,14 +2,19 @@
 //   padding: .25rem .75rem;
 // }
 
-@import './../../index.scss';
+@import './../../constants/const';
 
 .todos{
+  margin-top: 9px;
+  margin-left: $list-padding;
+  margin-right: $list-padding;
   list-style: none;
-  width: 100%;
   background-color: $primary-background;  
+
   &__li{
-    width: 100%;
-    background-color: white;  
+    @include item-border();
+    @include color_btn($todo_color,$color_title);
+     width: 100%;
+    // background-color: white;  
   }
 }
