@@ -1,0 +1,31 @@
+$form_width:500px;
+//$back_color:
+$primary_background:rgb(234, 217, 245);
+
+$color_title:black;
+$color_subtitle:grey;
+
+$heigth_header:100px;
+$heigth_add_form:100px;
+
+$heigth_nav:70px;
+
+//толщина заголовка
+$font-weight-header: 550;
+//толщина строки "кол-во активных дел"
+$font-weight-subheader: 550;
+
+@mixin color_btn($background, $text){
+    color: $text;
+    background-color: $background;
+  }
+  
+  @mixin border_btn ($clr,$count){
+
+    //     box-shadow: 0 0 0 3px $primary_background+10, 
+    //                 0 0 0 6px $primary_background+20,
+    //                 0 0 0 9px $primary_background+30;
+     @for $i from 1 through $count { 
+      box-shadow: 0 0 0 $i*3px $clr+$i*10;
+    }
+  }

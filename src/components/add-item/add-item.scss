@@ -1,10 +1,27 @@
+@import './../../constants/const';
+
 .add-item {
     margin-top: 1rem;
-    border-radius: 15px;
-
+    height: $heigth_add_form;
+    width: 100%;
     &__text{
-      margin-right: 3px;
-      height: 70px;
+
+      border-radius: 100px; 
+      height: $heigth_add_form*0.8;
+        @include border_btn($primary_background,2);
+        @include color_btn($primary_background,$color_subtitle);
+
+      &:before{
+           outline: none !important;
+      }
+
+      &:focus{   
+        @include border_btn($primary_background,3);
+        @include color_btn($primary_background,$color_subtitle);
+
+
+      }
+
     }
 
 
@@ -17,6 +34,5 @@
   //   height: 50px;
   // }
   // .add-item-text::before{
-  //   outline: none !important;
   // }
   

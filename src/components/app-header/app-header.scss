@@ -1,21 +1,23 @@
 // $color_title:black;
 // $color_subtitle:grey;
 
-@import './../../styles/base';
+@import './../../constants/const';
 
 .header {
 
-
+    height: $heigth_header;
     align-items: flex-end; 
 
     &__title {
       font-size: 3.0rem;
       flex-grow: 1;
       color:$color_title;
+      font-weight: $font-weight-header;
     }
     
     &__subtitle {
       font-size: 1.0rem;
       color: $color_subtitle;
+      font-weight: $font-weight-subheader;
     }
 }
