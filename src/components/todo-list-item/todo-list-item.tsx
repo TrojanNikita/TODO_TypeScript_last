@@ -83,8 +83,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
         setNewLabel(e.currentTarget.value);
       },[]);
 
-
-
+    //todo: warning editChange
+    //нужно обернуть в useCallback, но не получается  
     const editChange=(()=>{
    //     e.preventDefault(); 
         if(editMode){
