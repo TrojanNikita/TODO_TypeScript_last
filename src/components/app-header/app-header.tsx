@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './app-header.scss';
 
 import {selectActiveLength} from './../../selectors/todo-selectors'
-import {RootState} from '../../reducers';
+import {GlobalState} from '../../types';
+
+
+import './app-header.scss';
 
 
 interface AppProps{
@@ -26,6 +28,6 @@ const AppHeader: React.FC<AppProps>=({activeCount=0})=>{
 
 //Передаем в пропс количество активных, оборачиваем в мемо,
 //т,е, перерисовываем , когда меняется кол-во активных
-export default connect((state:RootState) => ({
+export default connect((state:GlobalState) => ({
     activeCount:selectActiveLength(state)
 }))(AppHeader);

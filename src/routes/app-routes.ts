@@ -1,14 +1,8 @@
 import { ALL,ACTIVE,DONE } from '../constants/routes';
 import {All,Active,Done} from '../components/containers/containers';
+import {AppRoute} from './../types';
 
 
-export interface AppRoute {
-    id: string;
-    path: string;
-    component: any;
-    description: string;
-    exact: boolean;
-}
 export const AppRoutes: AppRoute[] = [
     {
         id:'1',

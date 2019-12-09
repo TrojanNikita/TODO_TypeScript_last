@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
 
-import {RootState} from '../reducers/index';
+import {GlobalState} from '../types';
 
 
 
-export const getTodos = (state:RootState) => state.TodoReduce.todos;
+export const getTodos = (state:GlobalState) => state.TodoReduce.todos;
 
 export const selectAllTodos = createSelector(
     getTodos,

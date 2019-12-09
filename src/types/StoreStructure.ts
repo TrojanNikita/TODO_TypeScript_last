@@ -1,6 +1,6 @@
-import  Todo  from "./Todo";
+import  {Todo}  from "./";
 
-export default interface StoreStructure {
+export interface StoreStructure {
     todos: Todo[];
     maxId: number;
 }

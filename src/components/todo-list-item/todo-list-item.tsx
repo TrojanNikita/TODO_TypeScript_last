@@ -2,10 +2,9 @@ import React, {  useState,useRef, FormEvent, useCallback } from "react";
 import { bindActionCreators, Dispatch } from 'redux';
 import {connect} from 'react-redux';
 
-import {ActionTypeTodo} from '../../types/ActionType';
 import {toggleTodo,deleteTodo, editTodo} from '../../actions/actionTodo';
-import  Todo  from "../../types/Todo";
-import ITodoListItem from '../../types/TodoListItem'
+
+import  {ActionTypeTodo,Todo,ITodoListItem}  from "../../types";
 import './todo-list-item.scss';
 
 

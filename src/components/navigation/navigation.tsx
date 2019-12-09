@@ -1,7 +1,9 @@
 
 import React,{useState, useCallback} from 'react';
 import { Link, withRouter,RouteComponentProps } from "react-router-dom";
-import { AppRoutes, AppRoute } from '../../routes/app-routes';
+import { AppRoutes } from '../../routes/app-routes';
+
+import {AppRoute} from './../../types'
 
 import './navigation.scss';
 

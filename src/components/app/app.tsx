@@ -1,10 +1,13 @@
 import React from 'react';
 //import { Switch, Route } from 'react-router-dom';
 
+//Роутинг
 import { Route, Switch, Router } from "react-router-dom";
-
-import { AppRoutes, AppRoute } from '../../routes/app-routes';
 import history from '../../constants/history';
+import { AppRoutes } from '../../routes/app-routes';
+
+//Типы
+import {AppRoute} from './../../types';
 
 //todos 
 //props: activeCount

@@ -2,8 +2,12 @@ import React,{useState, useCallback} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import {ActionTypeTodo} from '../../types/ActionType';
+//Типы
+import {ActionTypeTodo} from '../../types';
+
 import {addTodo} from '../../actions/actionTodo';
+
+//Стили
 import './add-item.scss';
 
 

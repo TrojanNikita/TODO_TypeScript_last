@@ -5,11 +5,11 @@ import TodoList from '../todo-list'
 
 import {connect} from 'react-redux';
 
-import {RootState} from '../../reducers/index';
+import {GlobalState} from '../../types';
 
-export const All = connect((state:RootState) => ({data:selectAllTodos(state)}))(TodoList);
+export const All = connect((state:GlobalState) => ({data:selectAllTodos(state)}))(TodoList);
 
-export const Active = connect((state:RootState) => ({data:selectActiveTodos(state)}))(TodoList);
+export const Active = connect((state:GlobalState) => ({data:selectActiveTodos(state)}))(TodoList);
 
-export const Done = connect((state:RootState) => ({data:selectDoneTodos(state)}))(TodoList);
+export const Done = connect((state:GlobalState) => ({data:selectDoneTodos(state)}))(TodoList);
 

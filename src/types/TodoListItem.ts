@@ -1,5 +1,5 @@
 //Интерфейс тудушки
-export default interface ITodoListItem{
+export interface ITodoListItem{
     //Для зачеркивания Тудушки
     classNames:string;
     //функция зачеркивания

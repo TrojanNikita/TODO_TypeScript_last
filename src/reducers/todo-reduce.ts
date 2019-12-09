@@ -1,13 +1,13 @@
 import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,TOGGLE_ALL,TOGGLE_TODO} from '../constants/actions';
-import  StoreStructure  from '../types/StoreStructure';
+import  {StoreStructure,ActionTypeTodo}  from '../types';
 
-import { ActionTypeTodo } from '../types/ActionType';
 
 
 const initState: StoreStructure = {
     todos: [],
     maxId:100
 };
+
 
 export function TodoReduce (
   state=initState, 
