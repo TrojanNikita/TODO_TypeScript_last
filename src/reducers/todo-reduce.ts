@@ -19,18 +19,18 @@ export function TodoReduce (
             ...state.todos,
             {
               id: state.maxId+1,
-              label: action.label||'',
+              label: action.label,
               done: false,
               priority: 0
             }],
-            maxId:state.maxId+1
+            ...state
           }
           case SET_PRIORITY:
           return {
           
             todos: state.todos.map(el =>
                   (el.id === action.id)
-                    ? {...el, priority: action.priority||0}
+                    ? {...el, priority: action.priority}
                     : el
               ),
             maxId:state.maxId
@@ -43,35 +43,35 @@ export function TodoReduce (
                       ? {...el, done: !el.done}
                       : el
                 ),
-              maxId:state.maxId
+                ...state
         }    
         case EDIT_TODO:
           return {
           
             todos: state.todos.map(todo =>
                   (todo.id === action.id)
-                    ? {...todo, label:action.label||''}
+                    ? {...todo, label:action.label}
                     : todo
             ),
-            maxId:state.maxId
+            ...state
         }
         case TOGGLE_ALL:
             return {
           
               todos: state.todos.map(todo => {
-                return { ...todo, done: action.flag||false};
+                return { ...todo, done: action.flag};
               }),
-              maxId:state.maxId
+              ...state
           }         
         case DELETE_COMPLETED_TODOS:
             return {      
               todos: state.todos.filter((el)=>!el.done),
-              maxId:state.maxId
+              ...state
           }         
         case DELETE_TODO:
             return {      
               todos: state.todos.filter((el)=>el.id!==action.id),
-              maxId:state.maxId
+              ...state
           }
         default:
           return state

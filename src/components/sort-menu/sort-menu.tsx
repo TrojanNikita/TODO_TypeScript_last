@@ -4,26 +4,27 @@ import React,{useState, useCallback} from 'react';
 import { ClickAwayListener } from '@material-ui/core';
 
 
+import { getMode} from './../../selectors/todo-selectors';
 import {setMode} from './../../actions/actionStatusMode'
 
 import {NONE, ASC, DESC} from '../../constants/priority-mode'
 
-import {ActionTypeStatusMode} from './../../types' 
+import {ActionTypeStatusMode,GlobalState} from './../../types' 
 
 import './sort-menu.scss';
 import { connect } from 'react-redux';
 
 
-interface AppProps{
+type AppProps=ReturnType<typeof mapStateToProps>&{
     setMode:(mode: string) => ActionTypeStatusMode;
 }
 
 
-const SortMenu: React.FC<AppProps>=({setMode})=>{
+const SortMenu: React.FC<AppProps>=({setMode, mode})=>{
 
     //видно менюшку или нет
     const [vis,setVis]=useState(false);
-    const [ActiveMode,setActiveMode]=useState(NONE);
+    const [ActiveMode,setActiveMode]=useState(mode);
 
     const clickOnMenu=useCallback(
         () => {
@@ -76,6 +77,11 @@ const mapDispatchToProps={
     setMode
 };
 
+
+//Передаем режим
+const mapStateToProps=(state:GlobalState) => ({mode: getMode(state)})
+
+
 //Передаем в пропс количество активных, оборачиваем в мемо,
 //т,е, перерисовываем , когда меняется кол-во активных
-export default connect(null, mapDispatchToProps)(SortMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(SortMenu);

@@ -9,7 +9,8 @@ import {NONE} from './../constants/priority-mode'
 
 
 const initState: ModeStatus = {
-    mode:NONE
+    mode:NONE,
+    status:ALL
 };
 
 
@@ -20,7 +21,11 @@ export function ModeStatusReducer (
         case SET_MODE:
             return {
                 ...state, mode:action.mode          
-            }    
+            }   
+        case SET_STATUS:
+            return {
+                 ...state, status:action.status          
+        }    
         default:
              return state
       }

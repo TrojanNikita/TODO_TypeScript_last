@@ -1,4 +1,4 @@
-import {SET_MODE} from './../constants/actions';
+import {SET_MODE, SET_STATUS} from './../constants/actions';
 import {ActionTypeStatusMode} from '../types/ActionType';
 
 
@@ -9,6 +9,12 @@ return {
     mode
 }
 }
+export const setStatus = (status:string): ActionTypeStatusMode => {
+    return {
+        type:SET_STATUS,
+        status
+    }
+    }
 
 
 

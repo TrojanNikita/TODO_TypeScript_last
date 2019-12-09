@@ -1,5 +1,5 @@
 
 export interface ModeStatus {
     mode: string;
-    //status:string;
+    status:string;
 }

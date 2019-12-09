@@ -14,7 +14,7 @@ import {AppRoute} from './../../types';
 import AppHeader from '../app-header/app-header';
 
 //navigation: All, Active, Done
-import {Navigation} from '../navigation/navigation';
+import Navigation from '../navigation/navigation';
 
 //Add new Item
 import AddItem from '../add-item/add-item';
