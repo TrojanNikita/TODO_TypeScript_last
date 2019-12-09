@@ -2,11 +2,6 @@
 @import './../../constants/const';
 
 
-@mixin square ($width, $height) {
-    width: $width ;
-    height: $height;  
-}
-
 
 
 
@@ -14,55 +9,58 @@
 
 
 .item {
-  width: 100%;
+  height:$heigth_li;
+  margin: 0;
+  padding: 0;
   @include item-border();
-  border-bottom: 1px solid ($primary_background)-20;
   cursor: pointer;
   @include color_btn($todo_color,$color_title);
   
   &__left{
+      margin: 0;
+      padding: 20px;
+      height:$heigth_li;
       width: 80%;
-      line-height: 35px;
       cursor: pointer;
       border:none;
-      display: inline-block;
       outline:none;
-
+      position: absolute;
+      float: left;
       &__edit{
         @include color_btn($todo_color,$color_title);
-            outline:none;
-            border:none;
-            width:100%;
-            cursor: pointer;
+
+        border:none;
+        border-bottom: 1px solid ($primary_background)-20;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        outline:none;
+        cursor: pointer;
 
             &--done{
+              width: 100%;
               @include color_btn($todo_color,$color_title);
+              border:none;
+              border-bottom: 1px solid ($primary_background)-20;
+              margin: 0;
+              padding: 0;
               cursor: pointer;
               outline:none;
-              border:none;
-              width:100%;
               text-decoration: line-through;
             }
       }
   }
 
   &__right{
+    margin: 0;
+    padding: 0;
     @include color_btn($todo_color,$color_title);
     width: 20%;
+    height: $heigth_li;
     border:none;
-    position:absolute;
-    display: inline-block;
+    float: right;
 
-    &__btn{
-      width: 30px;
-      height: 30px;
-      margin: 3px;
-      text-align: center;      
-    }
-
-
-
-
+    
   }
 
 }

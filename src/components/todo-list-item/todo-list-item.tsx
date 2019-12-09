@@ -1,18 +1,19 @@
 import React, {  useState,useRef, FormEvent, useCallback } from "react";
-import { bindActionCreators, Dispatch } from 'redux';
+
 import {connect} from 'react-redux';
 
 import {toggleTodo,deleteTodo, editTodo} from '../../actions/actionTodo';
 
 import  {ActionTypeTodo,Todo,ITodoListItem}  from "../../types";
+
+import Priority from './../priority/priority'
+import {Buttons} from './../buttons/buttons'
 import './todo-list-item.scss';
 
 
 
-
-
 const TodoListItem:React.FC<ITodoListItem>=
-({classNames,onInputClick,onSubmitItem, onEditClick, inputEl,inputValue,onLabelChange, isRead,editClassName, onDeleteClick})=>{
+({idItem,priority, classNames,onInputClick,onSubmitItem, onEditClick, inputEl,inputValue,onLabelChange, isRead,editClassName, onDeleteClick})=>{
     return(
         <form   className='item'
                 onSubmit={onSubmitItem}>
@@ -29,17 +30,13 @@ const TodoListItem:React.FC<ITodoListItem>=
                     />
                 </div>
 
-                <div className="item__right">    
-                    <button type="button"
-                        className="item__right__btn btn btn-outline-danger btn-sm float-right"
-                        onClick={onDeleteClick}>
-                        <i className="my-icon fa fa-trash-o" />
-                    </button>
-                    <button type="button"
-                        className={editClassName}
-                        onClick={onEditClick}>
-                        <i className="my-icon fa fa-pencil" />
-                    </button>
+                <div className="item__right">  
+                    <Buttons  onEditClick={onEditClick}
+                              onDeleteClick={onDeleteClick}
+                              editClassName={editClassName}  />                        
+                    <Priority
+                              idItem={idItem} 
+                              priority={priority} />
                 </div>
                 
         </form>
@@ -52,7 +49,10 @@ const TodoListItem:React.FC<ITodoListItem>=
 
 
 //Контейнеру поступает только тудушка: id, label, done
-type IItemContainer = ReturnType<typeof mapDispatchToProps> & {
+type IItemContainer =  {
+    deleteTodo: (id: number) => ActionTypeTodo;
+    toggleTodo: (id: number) => ActionTypeTodo;
+    editTodo: (id: number, label:string) => ActionTypeTodo;
     item: Todo;
   };
 
@@ -76,8 +76,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
     //В случае повторного нажатия, если строка не стала пустой изменяем
     //в глобальном хранилище todo, иначе вообще удаляем пустую строку
     const classNameEdit=editMode?
-    "item__right__btn btn btn-outline-dark btn-sm float-right active":
-    "item__right__btn btn btn-outline-dark btn-sm float-right"
+    "buttons__right btn btn-outline-dark active":
+    "buttons__right btn btn-outline-dark"
 
     const onLabelChange=useCallback((e:React.FormEvent<HTMLInputElement>)=>{
         setNewLabel(e.currentTarget.value);
@@ -131,10 +131,6 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 
 
 
-
-
-
-
     //Для cross out: зачеркиваем, если выполнена 
     //и не включен edit mode
     let classNames='item__left__edit';
@@ -144,6 +140,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 
     return(
         <TodoListItem
+                        idItem={item.id}
+                        priority={item.priority}
                         classNames={classNames}
                         onSubmitItem={onSubmitItem}
                         onLabelChange={onLabelChange}
@@ -161,15 +159,11 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 
 
 
-const mapDispatchToProps = (dispatch: Dispatch<ActionTypeTodo>) =>
-bindActionCreators(
-  {
+const mapDispatchToProps = {  
       toggleTodo,
       deleteTodo,
-      editTodo
-  },
-  dispatch
-);
+      editTodo 
+};
 
 
 export default connect(null,mapDispatchToProps)(TodoListItemContainer);

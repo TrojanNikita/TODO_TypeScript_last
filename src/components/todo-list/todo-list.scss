@@ -12,6 +12,9 @@
   background-color: $primary-background;  
 
   &__li{
+    padding: 0;
+    margin: 0;
+    height: $heigth_li;
     @include item-border();
     @include color_btn($todo_color,$color_title);
      width: 100%;

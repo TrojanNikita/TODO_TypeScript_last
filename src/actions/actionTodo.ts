@@ -1,5 +1,5 @@
 import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,
-        TOGGLE_ALL,TOGGLE_TODO} from './../constants/actions';
+        TOGGLE_ALL,TOGGLE_TODO, SET_PRIORITY} from './../constants/actions';
 import {ActionTypeTodo} from '../types/ActionType';
 
 export const addTodo = (label:string): ActionTypeTodo => {
@@ -42,6 +42,14 @@ export const deleteTodo = (id:number): ActionTypeTodo => {
     return {
         type: DELETE_TODO,
         id
+    }
+}
+
+export const setPriority = (id:number,priority:number): ActionTypeTodo => {
+    return {
+        type: SET_PRIORITY,
+        id,
+        priority
     }
 }
 

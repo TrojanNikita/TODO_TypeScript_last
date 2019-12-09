@@ -19,8 +19,6 @@ const NavigationConnect:React.FC<RouteComponentProps>=({history}:RouteComponentP
     const handleClick=useCallback(
         (route:AppRoute) =>()=> {
             setActiveLink(route)
-            // localStorage.removeItem("route");
-            // localStorage.setItem('route', id)
         },
         [],
     )

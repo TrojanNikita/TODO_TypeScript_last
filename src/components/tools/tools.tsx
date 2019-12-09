@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './tools.scss';
 
-import { selectDoneLength} from './../../selectors/todo-selectors';
+import { getDoneLength} from './../../selectors/todo-selectors';
 import {ActionTypeTodo,GlobalState} from '../../types';
 import { bindActionCreators, Dispatch } from 'redux';
 import {toggleAll,deleteCompleted} from '../../actions/actionTodo';
@@ -37,7 +37,7 @@ const Tools: React.FC<ToolsProps>=({doneCount, toggleAll, deleteCompleted})=>{
 
 
 //Количество выполненных дел
-const mapStateToProps=(state:GlobalState) => ({doneCount: selectDoneLength(state)})
+const mapStateToProps=(state:GlobalState) => ({doneCount: getDoneLength(state)})
 
 
 const mapDispatchToProps = (dispatch: Dispatch<ActionTypeTodo>) =>

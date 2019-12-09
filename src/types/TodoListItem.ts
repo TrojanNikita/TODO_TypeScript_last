@@ -1,5 +1,7 @@
 //Интерфейс тудушки
 export interface ITodoListItem{
+    idItem:number;
+    priority:number;
     //Для зачеркивания Тудушки
     classNames:string;
     //функция зачеркивания

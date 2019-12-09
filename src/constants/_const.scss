@@ -8,8 +8,12 @@ $todo_color: ($primary_background)+5;
 $color_title:black;
 $color_subtitle:grey;
 
+$color_menu:rgb(248, 219, 192);
+
 $heigth_header:100px;
 $heigth_add_form:100px;
+
+$heigth_li:100px;
 
 $heigth_nav:100px;
 
@@ -29,6 +33,22 @@ $font-weight-subheader: 550;
     @for $i from 1 through $count { 
         box-shadow: 0 0 0 $i*3px $clr+$i*2;
     }
+}
+
+
+@mixin star_empty {
+    font-family: 'FontAwesome';
+                content: "\f006";    
+}
+
+@mixin star_active {
+    font-family: 'FontAwesome';
+                content: "\f005";    
+}
+
+@mixin square ($width, $height) {
+    width: $width ;
+    height: $height;  
 }
 
 @mixin item-border(){
