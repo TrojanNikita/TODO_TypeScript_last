@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import {getActiveLength} from './../../selectors/todo-selectors'
-import {GlobalState} from '../../types';
+//import { connect } from 'react-redux';
+// import {getActiveLength} from './../../selectors/todo-selectors'
+// import {GlobalState} from '../../types';
 
 
 
@@ -10,12 +9,12 @@ import './app-header.scss';
 import SortMenu from '../sort-menu/sort-menu';
 
 
-interface AppProps{
-    activeCount: number;
-}
+// interface AppProps{
+//     activeCount: number;
+// }
 
 
-const AppHeader: React.FC<AppProps>=({activeCount=0})=>{
+const AppHeader: React.FC=()=>{
   return(
     <div className="header d-flex">
         <h1 className="header__title d-flex">
@@ -33,6 +32,7 @@ const AppHeader: React.FC<AppProps>=({activeCount=0})=>{
 
 //Передаем в пропс количество активных, оборачиваем в мемо,
 //т,е, перерисовываем , когда меняется кол-во активных
-export default connect((state:GlobalState) => ({
-    activeCount:getActiveLength(state)
-}))(AppHeader);
+// export default connect((state:GlobalState) => ({
+//     activeCount:getActiveLength(state)
+// }))(AppHeader);
+export default React.memo(AppHeader);

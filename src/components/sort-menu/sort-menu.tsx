@@ -9,7 +9,9 @@ import {setMode} from './../../actions/actionStatusMode'
 
 import {NONE, ASC, DESC} from '../../constants/priority-mode'
 
-import {ActionTypeStatusMode,GlobalState} from './../../types' 
+import {GlobalState} from './../../types' 
+
+import {ActionTypeStatusMode} from './../../actions/actionStatusMode' 
 
 import './sort-menu.scss';
 import { connect } from 'react-redux';
@@ -30,7 +32,7 @@ const SortMenu: React.FC<AppProps>=({setMode, mode})=>{
         () => {
             setVis(!vis);
         },
-        [],
+        [vis],
     )
 
 
@@ -50,13 +52,15 @@ const SortMenu: React.FC<AppProps>=({setMode, mode})=>{
     )
 
         const classNames="sort-menu__modes__btn";
-
+        const classNameBtn='sort-menu__btn';
 
   return(
     <ClickAwayListener onClickAway={handleClickAway}>
         <div className="sort-menu ">
-            <button className='sort-menu__btn 	fa fa-sort-down'
-                    onClick={clickOnMenu}></button>
+            <button className={vis?`${classNameBtn}--active fa fa-sort-down`:`${classNameBtn} fa fa-sort-down`}
+                    onClick={clickOnMenu}>
+                        {ActiveMode}
+                    </button>
 
                     {
                         vis?
@@ -77,11 +81,8 @@ const mapDispatchToProps={
     setMode
 };
 
-
 //Передаем режим
 const mapStateToProps=(state:GlobalState) => ({mode: getMode(state)})
 
 
-//Передаем в пропс количество активных, оборачиваем в мемо,
-//т,е, перерисовываем , когда меняется кол-во активных
 export default connect(mapStateToProps, mapDispatchToProps)(SortMenu);

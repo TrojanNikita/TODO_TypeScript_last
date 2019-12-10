@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import './tools.scss';
 
 import { getDoneLength} from './../../selectors/todo-selectors';
-import {ActionTypeTodo,GlobalState} from '../../types';
+import {GlobalState} from '../../types';
+
+import {ActionTypeTodo} from './../../actions/actionTodo'
 import { bindActionCreators, Dispatch } from 'redux';
 import {toggleAll,deleteCompleted} from '../../actions/actionTodo';
 

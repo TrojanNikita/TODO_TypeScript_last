@@ -1,5 +1,6 @@
 import {SET_STATUS,SET_MODE} from '../constants/actions';
-import  {ModeStatus,ActionTypeStatusMode}  from '../types';
+import  {ModeStatus}  from '../types';
+import {ActionTypeStatusMode} from './../actions/actionStatusMode'
 
 import {ALL} from './../constants/status'
 

@@ -4,24 +4,34 @@
 .sort-menu{
 
     &__btn{
-        margin: 2rem;
+        margin: 1.8rem;
+        text-align: left;
         @include color_btn($primary_background,$color_title);
         @include item_border();   
-
+        font-weight: bold;
         &:focus{
                  @include item_border();   
+        }
+        &:hover{
+
+            border-radius: 5px;
+            @include color_btn(($color_menu)-30,$color_title);
+        }
+        &--active{
+            @extend .sort-menu__btn;
+            border-radius: 5px;
+            @include color_btn(($color_menu)-30,$color_title);
         }
     }
 
     &__modes{
         
         @include border_btn(($color_menu)-20,3);
-        border-radius: 10px;
+        border-radius: 5px;
         display: block;
-        position: fixed; 
-        padding: 10px;
-        margin-top: -1.5rem;
-        margin-left: -40px;
+        position:absolute; 
+        margin-top: -1.4rem;
+        margin-left: 20px;
         box-sizing: border-box;
         width: 100px;
         background-color: $color_menu; 
@@ -35,9 +45,13 @@
             &:focus{
                 @include item_border();   
             }
+            &:hover{
+                width: 100%;
+                @include color_btn(($color_menu)-5,$color_title);
+            }
             &--active{
                     width: 100%;
-                    @include color_btn(($color_menu)+20,$color_title);
+                    @include color_btn(($color_menu)-5,$color_title);
                     @include item_border();  
                     border-bottom: 1px solid ($color_menu)-20; 
                     &:focus{

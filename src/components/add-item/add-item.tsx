@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 //Типы
-import {ActionTypeTodo} from '../../types';
+import {ActionTypeTodo} from '../../actions/actionTodo';
 
 import {addTodo} from '../../actions/actionTodo';
 

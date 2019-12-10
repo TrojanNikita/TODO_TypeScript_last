@@ -5,7 +5,6 @@ export const EDIT_TODO= 'EDIT_TODO';
 export const TOGGLE_ALL= 'TOGGLE_ALL';
 export const TOGGLE_TODO= 'TOGGLE_TODO';
 export const UPDATE_DRAFT= 'UPDATE_DRAFT';
-
 export const SET_PRIORITY= 'SET_PRIORITY';
 
 

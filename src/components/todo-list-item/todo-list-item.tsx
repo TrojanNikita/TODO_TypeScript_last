@@ -4,7 +4,9 @@ import {connect} from 'react-redux';
 
 import {toggleTodo,deleteTodo, editTodo} from '../../actions/actionTodo';
 
-import  {ActionTypeTodo,Todo,ITodoListItem}  from "../../types";
+import  {Todo,ITodoListItem}  from "../../types";
+
+import {ActionTypeTodo} from './../../actions/actionTodo'
 
 import Priority from './../priority/priority'
 import {Buttons} from './../buttons/buttons'

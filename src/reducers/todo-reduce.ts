@@ -1,5 +1,6 @@
 import {SET_PRIORITY,ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,TOGGLE_ALL,TOGGLE_TODO} from '../constants/actions';
-import  {StoreStructure,ActionTypeTodo}  from '../types';
+import  {StoreStructure}  from '../types';
+import {ActionTypeTodo} from './../actions/actionTodo'
 
 
 
@@ -13,7 +14,7 @@ export function TodoReduce (
   state=initState, 
   action: ActionTypeTodo): StoreStructure {
     switch (action.type) {
-        case ADD_TODO:
+      case ADD_TODO:
           return {
             todos:[
             ...state.todos,
@@ -22,56 +23,58 @@ export function TodoReduce (
               label: action.label,
               done: false,
               priority: 0
-            }],
-            ...state
+            }],             
+            maxId:state.maxId+1           
           }
           case SET_PRIORITY:
           return {
-          
+            ...state,
             todos: state.todos.map(el =>
                   (el.id === action.id)
                     ? {...el, priority: action.priority}
                     : el
-              ),
-            maxId:state.maxId
+              )
       }    
         case TOGGLE_TODO:
           return {
-          
-              todos: state.todos.map(el =>
-                    (el.id === action.id)
-                      ? {...el, done: !el.done}
-                      : el
-                ),
-                ...state
-        }    
+            ...state ,
+              todos:state.todos.map((todo) => {
+              if (todo.id === action.id) {
+                return Object.assign({}, todo, {
+                  done: !todo.done
+                })
+              }
+              return todo
+              }) 
+        }
         case EDIT_TODO:
           return {
-          
+            ...state,
             todos: state.todos.map(todo =>
-                  (todo.id === action.id)
-                    ? {...todo, label:action.label}
-                    : todo
-            ),
-            ...state
+                  (todo.id === action.id)?
+                     {...todo, label:action.label}
+                     : todo)
+                    
+            
         }
         case TOGGLE_ALL:
             return {
-          
+              ...state,
               todos: state.todos.map(todo => {
-                return { ...todo, done: action.flag};
-              }),
-              ...state
+                return Object.assign({}, todo, {done: action.flag})
+              })
           }         
         case DELETE_COMPLETED_TODOS:
-            return {      
+            return {  
+              ...state,    
               todos: state.todos.filter((el)=>!el.done),
-              ...state
+              
           }         
         case DELETE_TODO:
             return {      
-              todos: state.todos.filter((el)=>el.id!==action.id),
-              ...state
+              ...state,
+              todos: state.todos.filter((el)=>el.id!==action.id)
+              
           }
         default:
           return state

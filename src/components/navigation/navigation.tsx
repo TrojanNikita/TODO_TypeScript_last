@@ -11,7 +11,7 @@ import {setStatus} from './../../actions/actionStatusMode'
 
 
 
-import {ActionTypeStatusMode} from './../../types' 
+import {ActionTypeStatusMode} from './../../actions/actionStatusMode' 
 import { connect } from 'react-redux';
 
 import './navigation.scss';
