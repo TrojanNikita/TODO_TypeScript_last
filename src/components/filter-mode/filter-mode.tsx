@@ -1,7 +1,4 @@
-import React,{useState, useCallback} from 'react';
-
-//Для щелчка вне формы
-import { ClickAwayListener } from '@material-ui/core';
+import React,{ useCallback} from 'react';
 
 
 import { getFilterMode} from './../../selectors/todo-selectors';
@@ -27,7 +24,6 @@ const FilterMode: React.FC<AppProps>=({setFilterMode, filter_mode})=>{
 
     const onBtnLeft=useCallback(
         ()=>{
-            console.log('btnleft')
             switch(filter_mode){
                 case ALL:
                 return setFilterMode(HIGH)
@@ -45,7 +41,6 @@ const FilterMode: React.FC<AppProps>=({setFilterMode, filter_mode})=>{
     )
     const onBtnRight=useCallback(
         ()=> {
-            console.log('btnright')
             switch(filter_mode){
                 case ALL:
                 return setFilterMode(NONE)
@@ -59,7 +54,7 @@ const FilterMode: React.FC<AppProps>=({setFilterMode, filter_mode})=>{
                 return setFilterMode(MIDLE)    
             }
         },
-        [onBtnLeft,filter_mode,setFilterMode],
+        [filter_mode,setFilterMode],
     )
 
 

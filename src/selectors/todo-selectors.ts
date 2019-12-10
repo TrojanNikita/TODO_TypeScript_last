@@ -14,6 +14,9 @@ import {NONE as mode_NONE, ALL as mode_ALL,SMALL as mode_SMALL,MIDLE as mode_MID
 
 
 export const getTodos = (state:GlobalState) => state.TodoReduce.todos;
+
+
+
 export const getMode = (state:GlobalState) => state.ModeStatusReducer.mode;
 export const getFilterMode = (state:GlobalState) => state.ModeStatusReducer.filter_mode;
 export const getStatus = (state:GlobalState) => state.ModeStatusReducer.status;
@@ -63,8 +66,9 @@ const myFilterByStatus:(arr:Todo[],status:string)=>Todo[]=(arr:Todo[],status:str
             return arr.filter((el)=>!el.done)
         case DONE:
             return arr.filter((el)=>el.done) 
-        case ALL:
-            return arr;  
+        case ALL:{
+            console.log(arr)
+            return arr; } 
         default:
             return arr;          
         }
@@ -95,7 +99,7 @@ export const getTodo=(state:GlobalState, id:number)=>state.TodoReduce.todos[id];
 export const getAllTodos = createSelector(
     [getMode,getStatus, getFilterMode,getTodos],
     (mode,status,filter_mode,allTodos) => {
-        return myFilterByMode(mySort(myFilterByStatus(allTodos,status),mode),filter_mode)}
+        return mySort(myFilterByMode(myFilterByStatus(allTodos,status),filter_mode),mode)}
 );
 
 // export const getTodosByMode = createSelector(
@@ -113,12 +117,12 @@ export const getAllTodos = createSelector(
 
 
 export const getDoneLength=createSelector(
-    getAllTodos,
+    getTodos,
     allTodos => allTodos.filter((el)=>el.done).length
 );
 
 export const getActiveLength=createSelector(
-    getAllTodos,
+    getTodos,
     allTodos => allTodos.filter((el)=>!el.done).length
 );
 
