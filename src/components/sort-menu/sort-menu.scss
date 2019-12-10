@@ -48,7 +48,7 @@
             }
             &:hover{
                 width: 100%;
-                @include color_btn(($color_menu)-5,$color_title);
+                @include color_btn(($primary_background),$color_title);
             }
             &--active{
                     width: 100%;

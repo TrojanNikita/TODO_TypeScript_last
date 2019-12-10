@@ -1,7 +1,9 @@
 @import './../../constants/const';
 
 //цвет активной кнопки
-$btn_clr_active: #a9c770; 
+
+//$btn_clr_active: #a9c770; 
+$btn_clr_active: #8acaac; 
 $btn_clr_hover:$btn_clr_active;
 
 
@@ -31,12 +33,12 @@ $btn_clr_hover:$btn_clr_active;
                 padding: 14px;
 
                 &:hover {
-                  @include color_btn($btn_clr_hover,($primary_background)-50);
+                  @include color_btn($btn_clr_hover,($primary_background));
                 }
                 
         }
         .link.active {
-                @include color_btn($btn_clr_active,$primary_background);
+                @include color_btn(($btn_clr_active)-1,$primary_background);
                 @include border_btn($btn_clr_active,2);
                 text-decoration: none;
                 padding: 14px;// &:hover {

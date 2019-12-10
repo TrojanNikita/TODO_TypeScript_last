@@ -1,8 +1,6 @@
 @import './../../constants/const';
 
 
-
-
 .buttons{
     @include square(100%,40%);
     margin: 0;
@@ -10,9 +8,12 @@
     padding: 0;
    // margin: 3px;    
     &__left{
+        
         float: left;
+        margin-right: 5px;
     }
-    &__right{       
+    &__right{   
+        @include item_border();   
         float: left;
   }
 }

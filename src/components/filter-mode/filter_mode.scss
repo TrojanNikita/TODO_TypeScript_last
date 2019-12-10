@@ -2,7 +2,6 @@
 
 .filter-mode{
     width: 100%;
-
     &__btn{
         display: inline-block;
         @include color_btn($primary_background,$color_title);
@@ -12,12 +11,11 @@
         }
     }
     &__content{
-
+        cursor: default;
         width: 10%;
         text-align: center;
         display: inline-block;
         @include color_btn($primary_background,$color_title);
         @include item_border();   
     }
-
 }
