@@ -8,5 +8,8 @@ export const UPDATE_DRAFT= 'UPDATE_DRAFT';
 export const SET_PRIORITY= 'SET_PRIORITY';
 
 
+
 export const SET_STATUS='SET_STATUS';
 export const SET_MODE='SET_MODE';
+
+export const SET_FILTERMODE='SET_FILTERMODE';

@@ -4,7 +4,8 @@
 .sort-menu{
 
     &__btn{
-        margin: 1.8rem;
+
+        //margin: 1.8rem;
         text-align: left;
         @include color_btn($primary_background,$color_title);
         @include item_border();   
@@ -30,8 +31,8 @@
         border-radius: 5px;
         display: block;
         position:absolute; 
-        margin-top: -1.4rem;
-        margin-left: 20px;
+        margin-top: -0.8rem;
+        margin-left: 25px;
         box-sizing: border-box;
         width: 100px;
         background-color: $color_menu; 

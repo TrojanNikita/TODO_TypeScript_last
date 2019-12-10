@@ -47,6 +47,7 @@ const SortMenu: React.FC<AppProps>=({setMode, mode})=>{
         (mode:string) =>()=> {
             setActiveMode(mode);
             setMode(mode);
+            setVis(false);
         },
         [setMode],
     )
@@ -59,7 +60,7 @@ const SortMenu: React.FC<AppProps>=({setMode, mode})=>{
         <div className="sort-menu ">
             <button className={vis?`${classNameBtn}--active fa fa-sort-down`:`${classNameBtn} fa fa-sort-down`}
                     onClick={clickOnMenu}>
-                        {ActiveMode}
+                        {!vis?ActiveMode:null}
                     </button>
 
                     {

@@ -6,18 +6,31 @@
 .header {
 
     height: $heigth_header;
-    align-items: flex-end; 
 
     &__title {
+      
+      display: inline-block;
       font-size: 3.0rem;
-      flex-grow: 1;
+      width: 30%;
+      height: 50%;
       color:$color_title;
       font-weight: $font-weight-header;
     }
     
     &__subtitle {
+      display: inline-block;
+      width: 100%;
       font-size: 1rem;
-      margin-bottom: 2rem;
+      color: $color_subtitle;
+      font-weight: $font-weight-subheader;
+    }
+    &__right {
+      margin: 0;
+      margin-bottom: 50px;
+      float: right;
+      height: 10%;
+      width: 10%;
+      font-size: 1rem;
       color: $color_subtitle;
       font-weight: $font-weight-subheader;
     }

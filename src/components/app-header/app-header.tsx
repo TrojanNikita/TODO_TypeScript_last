@@ -9,6 +9,9 @@ import './app-header.scss';
 import SortMenu from '../sort-menu/sort-menu';
 
 
+import FilterMode from '../filter-mode/filter-mode';
+
+
 // interface AppProps{
 //     activeCount: number;
 // }
@@ -16,14 +19,18 @@ import SortMenu from '../sort-menu/sort-menu';
 
 const AppHeader: React.FC=()=>{
   return(
-    <div className="header d-flex">
-        <h1 className="header__title d-flex">
+    <div className="header">
+        <h1 className="header__title">
           todos
         </h1>
         {/* <h2 className="header__subtitle d-flex">
           {activeCount} more to do
         </h2> */}
-         <SortMenu/>
+        <div className='header__subtitle'>
+           <FilterMode/>
+        </div>
+        <div className='header__right'><SortMenu/></div>
+         
 
 
     </div>

@@ -1,0 +1,23 @@
+@import './../../constants/const';
+
+.filter-mode{
+    width: 100%;
+
+    &__btn{
+        display: inline-block;
+        @include color_btn($primary_background,$color_title);
+        @include item_border();   
+        &:focus{
+            @include item_border(); 
+        }
+    }
+    &__content{
+
+        width: 10%;
+        text-align: center;
+        display: inline-block;
+        @include color_btn($primary_background,$color_title);
+        @include item_border();   
+    }
+
+}
