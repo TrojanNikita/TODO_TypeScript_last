@@ -29,7 +29,7 @@ const AppHeader: React.FC=()=>{
         <div className='header__subtitle'>
            <FilterMode/>
         </div>
-        <div className='header__right'><SortMenu/></div>
+        {/* <div className='header__right'><SortMenu/></div> */}
          
 
 

@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 
-import {Todo} from './../types'
 
 
 

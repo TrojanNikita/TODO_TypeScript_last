@@ -12,6 +12,7 @@ import {ActionTypeStatusMode} from './../../actions/actionStatusMode'
 import './filter_mode.scss';
 import { connect } from 'react-redux';
 import { NONE,ALL,HIGH,MIDLE,SMALL } from '../../constants/filter-mode';
+import SortMenu from '../sort-menu/sort-menu';
 
 
 type AppProps=ReturnType<typeof mapStateToProps>&{
@@ -62,7 +63,12 @@ const FilterMode: React.FC<AppProps>=({setFilterMode, filter_mode})=>{
         <div className="filter_mode">
             <button className='filter-mode__btn fa fa-arrow-left'
                     onClick={onBtnLeft}></button>
-            <div className='filter-mode__content '>{filter_mode}</div>
+            <div className='filter-mode__content '>
+                {
+                    filter_mode===ALL?  
+                    <SortMenu/>:
+                    filter_mode}
+            </div>
             <button className='filter-mode__btn fa fa-arrow-right'
                     onClick={onBtnRight}></button>
             
