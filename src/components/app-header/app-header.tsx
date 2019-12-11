@@ -6,7 +6,6 @@ import React from 'react';
 
 
 import './app-header.scss';
-import SortMenu from '../sort-menu/sort-menu';
 
 
 import FilterMode from '../filter-mode/filter-mode';

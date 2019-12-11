@@ -5,7 +5,10 @@ import { createSelector } from 'reselect';
 
 import {GlobalState} from '../types';
 
-import {mySort,myFilterByMode,myFilterByStatus} from './../utils/utils'
+import {mySort,myFilter} from './../utils/utils'
+
+import {priority} from './../constants/filter-mode'
+import {done} from './../constants/status'
 
 
 
@@ -24,9 +27,11 @@ export const getStatus = (state:GlobalState) => state.ModeStatusReducer.status;
 export const getTodo=(state:GlobalState, id:number)=>state.TodoReduce.todos[id];
 
 export const getAllTodos = createSelector(
-    [getMode,getStatus, getFilterMode,getTodos],
-    (mode,status,filter_mode,allTodos) => {
-        return mySort(myFilterByMode(myFilterByStatus(allTodos,status),filter_mode),mode)}
+    [getTodos,getMode,getStatus, getFilterMode],
+    (allTodos,mode,status,filter_mode) => {
+        const newArr=mySort(myFilter(myFilter(allTodos,'done',done(status)),'priority',priority(filter_mode)),'priority',mode);
+        console.log(newArr)
+        return newArr}
 );
 
 // export const getTodosByMode = createSelector(

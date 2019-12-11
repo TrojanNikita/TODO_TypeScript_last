@@ -55,12 +55,14 @@ const SortMenu: React.FC<AppProps>=({setMode, mode})=>{
         const classNames="sort-menu__modes__btn";
         const classNameBtn='sort-menu__btn';
 
+        //иконка стрелки вниз   fa fa-sort-down  
+
   return(
     <ClickAwayListener onClickAway={handleClickAway}>
         <div className="sort-menu ">
-            <button className={vis?`${classNameBtn}--active fa fa-sort-down`:`${classNameBtn} fa fa-sort-down`}
+            <button className={vis?`${classNameBtn}--active`:`${classNameBtn}`}
                     onClick={clickOnMenu}>
-                        {!vis?ActiveMode:null}
+                        {'ALL'}
                     </button>
 
                     {
