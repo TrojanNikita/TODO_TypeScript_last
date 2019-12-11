@@ -5,21 +5,21 @@ export const MIDLE = 'MIDLE';
 export const ALL = 'ALL';
 
 
-function priority(str:string){
+
+
+function predPriority(el:number, str:string):boolean{
     switch(str){
         case NONE:
-            return 0;
+            return el===0;
         case SMALL:
-            return 1;
+            return el===1;
         case MIDLE:
-            return 2;
+            return el===2;
         case HIGH:
-            return 3;
-        case ALL:
-            return;
+            return el===3;
         default:
-            return ;
+            return true;
     }
 }
 
-export {priority};
+export {predPriority};

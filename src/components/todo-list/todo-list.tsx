@@ -6,7 +6,7 @@ import './todo-list.scss';
 
 
 export interface ITodoList{
-  data:Todo[];
+  data:Array<Todo>;
 }
 
 const TodoList= (props:ITodoList) => {
