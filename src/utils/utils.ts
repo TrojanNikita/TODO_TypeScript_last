@@ -46,55 +46,42 @@ function mySort<T>(arr:T[],param:keyof T,mode:string):T[]{
         }
 }
 
-//T - тип фильтруемого массива
-//K - свойство по которому идет сортировка
+ export {mySort};
 
-function myFilter<T,K extends keyof T>(arr:T[],param:K,value?:T[K]):T[]{
-    if (value)
-        return arr.filter((el)=>el[param]=value)
-    else return arr;    
+//TODO: не знаю как исправить - в фильтре по статусу в статусе "Все" надо
+// прям прописывать, что все - это и выполненные и не выполненные, просто вернуть массив 
+//не получается, в таком случае TodoList не перерисовывает список
+
+//Хорошо б сделать один фильтр для разных режимов, 
+//но из-за этой проблемы он некорректно работает 
+export const myFilterByStatus:(arr:Todo[],status:string)=>Todo[]=(arr:Todo[],status:string)=>{
+    switch (status) {
+        case ACTIVE:
+            return arr.filter((el)=>!el.done)
+        case DONE:
+            return arr.filter((el)=>el.done) 
+        case ALL:
+            return arr.filter((el)=>el.done||!el.done) ; 
+        default:
+            return arr;          
+        }
 }
 
-export {mySort, myFilter};
+export const myFilterByMode:(arr:Todo[],filter_mode:string)=>Todo[]=(arr:Todo[],filter_mode:string)=>{
 
-
-
-
-
-// export const myFilterByStatus:(arr:Todo[],status:string)=>Todo[]=(arr:Todo[],status:string)=>{
-//     switch (status) {
-//         case ACTIVE:
-//             return arr.filter((el)=>!el.done)
-//         case DONE:
-//             return arr.filter((el)=>el.done) 
-//         case ALL:
-//             return arr.filter((el)=>el.done||!el.done) ; 
-//         default:
-//             return arr;          
-//         }
-// }
-
-
-// //TODO: не знаю как исправить - в фильтре по статусу в статусе "Все" надо
-// // прям прописывать, что все - это и выполненные и не выполненные, просто вернуть массив 
-// //не получается, в таком случае TodoList не перерисовывает список
-
-
-// export const myFilterByMode:(arr:Todo[],filter_mode:string)=>Todo[]=(arr:Todo[],filter_mode:string)=>{
-
-//     switch (filter_mode) {
-//         case mode_NONE:
-//             return arr.filter((el)=>el.priority===0) 
-//         case mode_SMALL:
-//             return arr.filter((el)=>el.priority===1) 
-//         case mode_MIDLE:
-//             return arr.filter((el)=>el.priority===2)    
-//         case mode_HIGH:
-//             return arr.filter((el)=>el.priority===3) 
-//         case mode_ALL:
-//             return arr
-//         default:
-//             return arr;          
-//         }
-// }
+    switch (filter_mode) {
+        case mode_NONE:
+            return arr.filter((el)=>el.priority===0) 
+        case mode_SMALL:
+            return arr.filter((el)=>el.priority===1) 
+        case mode_MIDLE:
+            return arr.filter((el)=>el.priority===2)    
+        case mode_HIGH:
+            return arr.filter((el)=>el.priority===3) 
+        case mode_ALL:
+            return arr
+        default:
+            return arr;          
+        }
+}
 
