@@ -25,7 +25,7 @@ export const getAllTodos = createSelector(
     [getTodos,getMode,getStatus, getFilterMode],
     (allTodos,mode,status,filter_mode) => {
         const newArr=mySort(myFilterByMode(myFilterByStatus(allTodos,status),filter_mode),'priority',mode);
-        console.log(newArr)
+        console.log(newArr, 'selector')
         return newArr}
 );
 

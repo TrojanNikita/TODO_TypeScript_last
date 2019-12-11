@@ -11,7 +11,7 @@ export interface ITodoList{
 
 const TodoList= (props:ITodoList) => {
 
-  console.log(props.data);
+  // console.log(props.data);
 
   const elements = props.data.map((item: Todo) => {
     return (
@@ -32,4 +32,4 @@ const TodoList= (props:ITodoList) => {
 };
 
 
-export default React.memo(TodoList);
+export default TodoList;

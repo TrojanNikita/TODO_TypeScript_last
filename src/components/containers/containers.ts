@@ -7,4 +7,7 @@ import {connect} from 'react-redux';
 
 import {GlobalState} from '../../types';
 
-export const TodoListWithData = connect((state:GlobalState) => ({data:getAllTodos(state)}))(TodoList);
+export const TodoListWithData = connect((state:GlobalState) => {
+console.log(getAllTodos(state));
+   return ({data:getAllTodos(state)});
+})(TodoList);
