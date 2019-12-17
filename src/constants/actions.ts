@@ -6,6 +6,8 @@ export const TOGGLE_ALL= 'TOGGLE_ALL';
 export const TOGGLE_TODO= 'TOGGLE_TODO';
 export const UPDATE_DRAFT= 'UPDATE_DRAFT';
 export const SET_PRIORITY= 'SET_PRIORITY';
+export const TODOS_LOADED='TODOS_LOADED';
+export const TODOS_LOADING='TODOS_LOADING';
 
 
 

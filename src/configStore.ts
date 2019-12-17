@@ -10,8 +10,8 @@ import {rootReducer} from './reducers';
 
 const logger = createLogger();
 
-const createStoreWithMiddleware = applyMiddleware(save(),logger)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunkMiddleware,logger)(createStore);
 
 export default function configureStore(initialState?:StoreStructure) {
-  return createStoreWithMiddleware(rootReducer, load());
+  return createStoreWithMiddleware(rootReducer);
 }
