@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import  {StoreStructure}  from './types';
+import thunkMiddleware from 'redux-thunk';
 
 //Сохранение состояния во время перезагрузки
 import { save, load } from "redux-localstorage-simple"
