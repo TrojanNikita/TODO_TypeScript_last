@@ -6,7 +6,7 @@ import {toggleTodo,deleteTodo, editTodo} from '../../actions/actionTodo';
 
 import  {Todo,ITodoListItem}  from "../../types";
 
-import {ActionTypeTodo} from './../../actions/actionTodo'
+import {ActionTypeTodo} from './../../types/Action'
 
 import Priority from './../priority/priority'
 import {Buttons} from './../buttons/buttons'
@@ -52,9 +52,9 @@ const TodoListItem:React.FC<ITodoListItem>=
 
 //Контейнеру поступает только тудушка: id, label, done
 type IItemContainer =  {
-    deleteTodo: (id: number) => ActionTypeTodo;
-    toggleTodo: (id: number) => ActionTypeTodo;
-    editTodo: (id: number, label:string) => ActionTypeTodo;
+    deleteTodo: (id: number) => Promise<ActionTypeTodo>;
+    toggleTodo: (id: number, done:Boolean) => Promise<ActionTypeTodo>;
+    editTodo: (id: number, label:string) => Promise<ActionTypeTodo>;
     item: Todo;
   };
 
@@ -114,8 +114,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 
 
     const onInputClick=useCallback(()=>{
-        toggleTodo(item.id)
-    },[toggleTodo,item.id])
+        toggleTodo(item.id, item.done)
+    },[toggleTodo,item.id,item.done])
 
     const onSubmitItem=useCallback(((event:FormEvent)=>{
         if(event)

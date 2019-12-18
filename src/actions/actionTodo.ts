@@ -1,97 +1,102 @@
 import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,
         TOGGLE_ALL,TOGGLE_TODO, SET_PRIORITY,TODOS_LOADED,TODOS_LOADING} from './../constants/actions';
 import {Todo} from './../types/Todo'
-import { Dispatch,ActionCreator } from 'redux'
- import {ThunkAction} from 'redux-thunk'
-import { StoreStructure } from '../types';
 
-import {GlobalState} from '../types';
+import { ActionTypeTodo, GetActionThunk,PostActionThunk} from '../types';
 
-//import {getTodos} from '../services/todo-service'        
+//import {getTodos} from '../services/todo-service' 
 
-
-export const addTodo = (label:string) => ({
-    
-        type: ADD_TODO,
-        label
-    
-} as const);
-
-export const todosLoaded = (todos:Todo[]) => ({
-    
+export const todosLoaded = (todos:Todo[]):ActionTypeTodo => ({    
         type: TODOS_LOADED,
-        todos
-    
-} as const);
+        todos    
+});
+
+export const addTodo= (label:string):PostActionThunk=>async dispatch => {
+        return fetch('/todos/new', {
+                method: 'POST',
+                body: JSON.stringify({name:label})
+        })
+        .then(res=>res.json())
+        .then((data:IGet)=>dispatch({
+                type: ADD_TODO,
+                todo:_transformTodo(data)
+        }));
+}
 
 
+export const toggleTodo = (id:number, done:Boolean):PostActionThunk=>async dispatch => {
+        return fetch(`/todo/${id}/change`, {
+                method: 'POST',
+                body: JSON.stringify({done})
+        })
+        .then(res=>res.json())
+        .then((data:any)=>dispatch({
+                type: TOGGLE_TODO,
+                id:data
+        }));
+}
+
+export const editTodo = (id:number,label:string):PostActionThunk=>async dispatch => {
+        return fetch(`/todo/${id}`, {
+                method: 'POST',
+                body: JSON.stringify({name:label})
+        })
+        .then(res=>res.json())
+        .then((data:any)=>dispatch({
+                type: EDIT_TODO,
+                id:data.id,
+                label:label
+        }));
+}
+
+export const deleteTodo = (id:number):PostActionThunk=>async dispatch => {
+        return fetch(`/todo/del`, {
+                method: 'POST',
+                body: JSON.stringify({id})
+        })
+        .then(res=>res.json())
+        .then((data:any)=>dispatch({
+                type: DELETE_TODO,
+                id:data.id
+        }));
+}
 
 
-
-export const toggleTodo = (id:number) => ({
-        type: TOGGLE_TODO,
-        id
-    } as const)
-
-
-export const toggleAll = (flag:boolean) => ({
+export const toggleAll = (flag:boolean):ActionTypeTodo => ({
         type: TOGGLE_ALL,
         flag
-    } as const)
+    })
 
-export const editTodo = (id:number,label:string) => ({
-        type: EDIT_TODO,
-        id,
-        label
-    } as const)
+// export const editTodo = (id:number,label:string):ActionTypeTodo => ({
+//         type: EDIT_TODO,
+//         id,
+//         label
+//     })
 
 
-export const deleteCompleted = () => ({
+export const deleteCompleted = ():ActionTypeTodo => ({
         type: DELETE_COMPLETED_TODOS
-    } as const)
+    })
 
 
-export const deleteTodo = (id:number) => ({
-    
-        type: DELETE_TODO,
-        id
-    
-} as const)
+// export const deleteTodo = (id:number):ActionTypeTodo => ({
+//         type: DELETE_TODO,
+//         id    
+// })
 
-export const setPriority = (id:number,priority:number) => ({
+export const setPriority = (id:number,priority:number):ActionTypeTodo => ({
         type: SET_PRIORITY,
         id,
-        priority
-    
-} as const)
+        priority    
+})
 
 
-export const todosLoading = () => ({
-        type: TODOS_LOADING
-    } as const)
+// export const todosLoading = () => ({
+//         type: TODOS_LOADING
+//     } as const)                            
 
 
-
-export type ActionTypeTodo= ReturnType<typeof addTodo>|
-                            ReturnType<typeof toggleTodo>|
-                            ReturnType<typeof toggleAll>|
-                            ReturnType<typeof editTodo>|
-                            ReturnType<typeof deleteCompleted>|
-                            ReturnType<typeof deleteTodo>|
-                            ReturnType<typeof todosLoaded>|
-                            ReturnType<typeof todosLoading>|
-                            ReturnType<typeof setPriority>;
-
-//ActionCreator<
-                //             ThunkAction<
-                //             Promise<typeof todosLoaded>,  // The type of the last action to be dispatched - will always be promise<T> for async actions
-                //             Todo[],                  // The type for the data within the last action
-                //             null,                       // The type of the parameter for the nested function 
-                //             ReturnType<typeof todosLoaded>            // The type of the last action to be dispatched
-                //     >
- export type AppThunk=ThunkAction<Promise<ReturnType<typeof todosLoaded>>, GlobalState, null, ReturnType<typeof todosLoaded>>
-
-export const fetchTodos=():AppThunk=>async dispatch => {
+export const fetchTodos=():GetActionThunk=>async dispatch => {
                 //dispatch(requestPosts(subreddit))
                 return fetch(`/todos`)
                 .then(response => response.json())

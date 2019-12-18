@@ -3,7 +3,7 @@ import TodoListItem from '../todo-list-item';
 
 import  {Todo}  from "../../types";
 import './todo-list.scss';
-import {fetchTodos,AppThunk} from './../../actions/actionTodo'
+import {fetchTodos} from './../../actions/actionTodo'
 import {Dispatch,AnyAction} from 'redux'
 import {todosLoaded,} from './../../actions/actionTodo'
 import {ThunkDispatch} from 'redux-thunk'
@@ -22,7 +22,7 @@ const TodoList= ({data,fetchTodos}:ITodoList) => {
   // console.log(props.data);
   useEffect(() => {
       fetchTodos()
-    }, [data])
+    }, [fetchTodos])
 
 
   const elements = data.map((item: Todo) => {

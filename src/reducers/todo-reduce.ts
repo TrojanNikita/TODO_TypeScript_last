@@ -1,12 +1,11 @@
 import {TODOS_LOADED,SET_PRIORITY,ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,TOGGLE_ALL,TOGGLE_TODO, TODOS_LOADING} from '../constants/actions';
 import  {StoreStructure}  from '../types';
-import {ActionTypeTodo} from './../actions/actionTodo'
+import {ActionTypeTodo} from '../types/Action'
 
 
 
 const initState: StoreStructure = {
-    todos: [],
-    maxId:100
+    todos: []
 };
 
 
@@ -26,13 +25,8 @@ export function TodoReduce (
           return {
             todos:[
             ...state.todos,
-            {
-              id: state.maxId+1,
-              label: action.label,
-              done: false,
-              priority: 0
-            }],             
-            maxId:state.maxId+1           
+            action.todo
+            ]         
           }
           case SET_PRIORITY:
           return {

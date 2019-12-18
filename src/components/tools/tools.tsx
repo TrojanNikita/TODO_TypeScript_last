@@ -5,7 +5,7 @@ import './tools.scss';
 import { getDoneLength} from './../../selectors/todo-selectors';
 import {GlobalState} from '../../types';
 
-import {ActionTypeTodo} from './../../actions/actionTodo'
+import {ActionTypeTodo} from '../../types/Action';
 import { bindActionCreators, Dispatch } from 'redux';
 import {toggleAll,deleteCompleted} from '../../actions/actionTodo';
 

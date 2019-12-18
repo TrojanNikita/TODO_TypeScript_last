@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import {setPriority} from '../../actions/actionTodo';
 
-import  {ActionTypeTodo}  from "../../actions/actionTodo";
+import {ActionTypeTodo} from '../../types/Action';
 
 
 

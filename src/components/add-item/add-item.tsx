@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 //Типы
-import {ActionTypeTodo} from '../../actions/actionTodo';
+import {ActionTypeTodo} from '../../types/Action';
 
 import {addTodo} from '../../actions/actionTodo';
 
@@ -47,7 +47,7 @@ const AddItem:React.FC<AddProp>=({addTodo})=> {
 const mapDispatchToProps = (dispatch: Dispatch<ActionTypeTodo>) =>
     bindActionCreators(
       {
-        addTodo: addTodo,
+        addTodo
       },
       dispatch
 );
