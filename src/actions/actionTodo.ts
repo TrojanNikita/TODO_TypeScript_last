@@ -3,7 +3,9 @@ import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,
 import {Todo} from './../types/Todo'
 import { Dispatch,ActionCreator } from 'redux'
  import {ThunkAction} from 'redux-thunk'
+import { StoreStructure } from '../types';
 
+import {GlobalState} from '../types';
 
 //import {getTodos} from '../services/todo-service'        
 
@@ -87,8 +89,9 @@ export type ActionTypeTodo= ReturnType<typeof addTodo>|
                 //             null,                       // The type of the parameter for the nested function 
                 //             ReturnType<typeof todosLoaded>            // The type of the last action to be dispatched
                 //     >
+ export type AppThunk=ThunkAction<Promise<ReturnType<typeof todosLoaded>>, GlobalState, null, ReturnType<typeof todosLoaded>>
 
-export const fetchTodos=()=>(dispatch:Dispatch<ReturnType<typeof todosLoaded>>) => {
+export const fetchTodos=():AppThunk=>async dispatch => {
                 //dispatch(requestPosts(subreddit))
                 return fetch(`/todos`)
                 .then(response => response.json())

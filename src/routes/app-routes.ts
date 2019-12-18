@@ -1,5 +1,5 @@
 import { ALL,ACTIVE,DONE } from '../constants/routes';
-import {TodoListWithData} from '../components/containers/containers';
+import {TodoListWithData} from '../containers/containers';
 import {AppRoute} from './../types';
 
 import {ALL as AllStatus,DONE as DoneStatus,ACTIVE as ActiveStatus} from './../constants/status';
