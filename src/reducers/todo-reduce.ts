@@ -1,4 +1,7 @@
-import {TODOS_LOADED,SET_PRIORITY,ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,TOGGLE_ALL,TOGGLE_TODO, TODOS_LOADING} from '../constants/actions';
+import {TODOS_LOADED,SET_PRIORITY,
+  ADD_TODO,DELETE_COMPLETED_TODOS,
+  DELETE_TODO,EDIT_TODO,TOGGLE_ALL,
+  TOGGLE_TODO} from '../constants/actions';
 import  {StoreStructure}  from '../types';
 import {ActionTypeTodo} from '../types/Action'
 

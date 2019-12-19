@@ -16,3 +16,8 @@ POST    /todo/:id             controllers.HomeController.updateTodo(id:Long)
 POST    /todo/:id/change      controllers.HomeController.updateTodoDone(id:Long)
 //Удалить (параметр: id:Long)
 POST    /todo/del             controllers.HomeController.deleteTodo
+
+//Параметр done: true/false, обновление, возвращает также /////done
+POST    /todos/update      controllers.HomeController.updateAllDone
+//Параметр done: true/false, удаление возвращает также done
+POST    /todos/delete         controllers.HomeController.deleteAllDone

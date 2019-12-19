@@ -4,7 +4,7 @@ import  {StoreStructure}  from './types';
 import thunkMiddleware from 'redux-thunk';
 
 //Сохранение состояния во время перезагрузки
-import { save, load } from "redux-localstorage-simple"
+//import { save, load } from "redux-localstorage-simple"
 
 import {rootReducer} from './reducers';
 

@@ -83,7 +83,6 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
     const editChange=(()=>{
    //     e.preventDefault(); 
         if(editMode){
-            console.log(newLabel);
             //если после изменения пустая тудушка, удаляем ее
             newLabel===''?
                   deleteTodo(item.id):editTodo(item.id,newLabel);

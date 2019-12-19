@@ -3,13 +3,8 @@ import { createSelector } from 'reselect';
 
 import {GlobalState} from '../types';
 
-import {mySort,myFilter} from './../utils/utils'
-
 import {predPriority} from './../constants/filter-mode'
 import {predDone} from './../constants/status'
-import priority from '../components/priority/priority';
-import filterMode from '../components/filter-mode/filter-mode';
-
 export const getTodos = (state:GlobalState) => state.TodoReduce.todos;
 
 
@@ -20,13 +15,13 @@ export const getStatus = (state:GlobalState) => state.ModeStatusReducer.status;
 
 
 
-const sortByPriority=(a:number ,b:number, mode:string)=>{
-if(mode='Asc') 
-        return a-b;
-else if(mode='Desc')
-        return b-a;    
-else return 0;            
-}
+// const sortByPriority=(a:number ,b:number, mode:string)=>{
+// if(mode='Asc') 
+//         return a-b;
+// else if(mode='Desc')
+//         return b-a;    
+// else return 0;            
+// }
 
 export const getTodo=(state:GlobalState, id:number)=>state.TodoReduce.todos[id];
 

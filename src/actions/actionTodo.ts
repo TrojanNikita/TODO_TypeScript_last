@@ -1,5 +1,7 @@
-import {ADD_TODO,DELETE_COMPLETED_TODOS,DELETE_TODO,EDIT_TODO,
-        TOGGLE_ALL,TOGGLE_TODO, SET_PRIORITY,TODOS_LOADED,TODOS_LOADING} from './../constants/actions';
+import {ADD_TODO,DELETE_COMPLETED_TODOS,
+        DELETE_TODO,EDIT_TODO,
+        TOGGLE_ALL,TOGGLE_TODO, 
+        SET_PRIORITY,TODOS_LOADED} from './../constants/actions';
 import {Todo} from './../types/Todo'
 
 import { ActionTypeTodo, GetActionThunk,PostActionThunk} from '../types';
@@ -52,59 +54,47 @@ export const editTodo = (id:number,label:string):PostActionThunk=>async dispatch
 export const deleteTodo = (id:number):PostActionThunk=>async dispatch => {
         return fetch(`/todo/${id}/del`)
         .then(res=>res.json())
-        .then((data:number)=>dispatch({
+        .then((id:number)=>dispatch({
                 type: DELETE_TODO,
-                id:data
+                id
         }));
 }
 
 export const setPriority = (id:number,priority:number):PostActionThunk=>async dispatch => {
         return fetch(`/todo/${id}/priority`, {
                 method: 'POST',
-                body: JSON.stringify({priority:priority})
+                body: JSON.stringify({priority})
         })
         .then(res=>res.json())
-        .then((data:number)=>dispatch({
+        .then((priority:number)=>dispatch({
                         type: SET_PRIORITY,
                         id,
-                        priority:data
+                        priority
         }));
 }
 
-// export const setPriority = (id:number,priority:number):ActionTypeTodo => ({
-//         type: SET_PRIORITY,
-//         id,
-//         priority    
-// })
+export const toggleAll = (flag:boolean):PostActionThunk=>async dispatch => {
+        return fetch(`/todos/update  `, {
+                method: 'POST',
+                body: JSON.stringify({done:flag})
+        })
+        .then(res=>res.json())
+        .then((done:boolean)=>dispatch({
+                type: TOGGLE_ALL,
+                flag:done
+        }));
+}
+export const deleteCompleted = ():PostActionThunk=>async dispatch => {
+        return fetch(`/todos/delete  `, {
+                method: 'POST',
+                body: JSON.stringify({done:true})
+        })
+        .then(res=>res.json())
+        .then((done:boolean)=>dispatch({
+                type: DELETE_COMPLETED_TODOS
+        }));
+}
 
-export const toggleAll = (flag:boolean):ActionTypeTodo => ({
-        type: TOGGLE_ALL,
-        flag
-    })
-
-// export const editTodo = (id:number,label:string):ActionTypeTodo => ({
-//         type: EDIT_TODO,
-//         id,
-//         label
-//     })
-
-
-export const deleteCompleted = ():ActionTypeTodo => ({
-        type: DELETE_COMPLETED_TODOS
-    })
-
-
-// export const deleteTodo = (id:number):ActionTypeTodo => ({
-//         type: DELETE_TODO,
-//         id    
-// })
-
-
-
-
-// export const todosLoading = () => ({
-//         type: TODOS_LOADING
-//     } as const)                            
 
 
 export const fetchTodos=():GetActionThunk=>async dispatch => {
@@ -114,6 +104,8 @@ export const fetchTodos=():GetActionThunk=>async dispatch => {
                 .then(json=>dispatch(todosLoaded(json.map(_transformTodo))));
         };
 
+
+
 //Потом убрать отсюда
 interface IGet{
     id:number;
@@ -122,7 +114,7 @@ interface IGet{
     priority:number;
 }
 
-//Здесь todo- та что с API пришла
+//Здесь todo - то что с API пришло
     function _transformTodo(todo:IGet):Todo {
       return {
         id:todo.id,

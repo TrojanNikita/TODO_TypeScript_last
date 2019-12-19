@@ -10,7 +10,9 @@ import { bindActionCreators, Dispatch } from 'redux';
 import {toggleAll,deleteCompleted} from '../../actions/actionTodo';
 
 
-type ToolsProps=ReturnType<typeof mapDispatchToProps>&{
+type ToolsProps={
+    toggleAll:(flag:boolean)=>Promise<ActionTypeTodo>;
+    deleteCompleted:()=>Promise<ActionTypeTodo>;
     doneCount:number;
 };
 
@@ -42,14 +44,10 @@ const Tools: React.FC<ToolsProps>=({doneCount, toggleAll, deleteCompleted})=>{
 const mapStateToProps=(state:GlobalState) => ({doneCount: getDoneLength(state)})
 
 
-const mapDispatchToProps = (dispatch: Dispatch<ActionTypeTodo>) =>
-bindActionCreators(
-  {
+const mapDispatchToProps ={
       toggleAll,
       deleteCompleted
-  },
-  dispatch
-);
+  };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Tools));
+export default connect(mapStateToProps, mapDispatchToProps)(Tools);
