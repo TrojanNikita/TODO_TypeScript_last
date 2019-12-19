@@ -1,16 +1,17 @@
-import React, {  useState,useRef, FormEvent, useCallback } from "react";
+import React, {  useState,useRef, FormEvent, useCallback } from "react"
 
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
 
-import {toggleTodo,deleteTodo, editTodo} from '../../actions/actionTodo';
+import {toggleTodo,deleteTodo,editTodo} from '../../actions/actionTodo'
 
-import  {Todo,ITodoListItem}  from "../../types";
+//типы контейнера и view
+import  {IItemContainer,ITodoListItem}  from "../../types/Components"
 
-import {ActionTypeTodo} from './../../types/Action'
-
+//Правый тулбокс
 import Priority from './../priority/priority'
 import {Buttons} from './../buttons/buttons'
-import './todo-list-item.scss';
+
+import './todo-list-item.scss'
 
 
 
@@ -51,14 +52,6 @@ const TodoListItem:React.FC<ITodoListItem>=
 
 
 //Контейнеру поступает только тудушка: id, label, done
-type IItemContainer =  {
-    deleteTodo: (id: number) => Promise<ActionTypeTodo>;
-    toggleTodo: (id: number, done:Boolean) => Promise<ActionTypeTodo>;
-    editTodo: (id: number, label:string) => Promise<ActionTypeTodo>;
-    item: Todo;
-  };
-
-
 const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTodo,editTodo})=>{
 
     //Включение режима редактирования
@@ -112,7 +105,7 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
         }
     })
 
-
+//Callbacks
     const onInputClick=useCallback(()=>{
         toggleTodo(item.id, item.done)
     },[toggleTodo,item.id,item.done])
@@ -160,7 +153,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 
 
 
-
+//Контейнер получает тужушку из родительского компонента
+//Но передает различные действия
 const mapDispatchToProps = {  
       toggleTodo,
       deleteTodo,

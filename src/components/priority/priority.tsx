@@ -15,7 +15,7 @@ import './priority.scss';
 interface IPriority {
     priority:number;
     idItem:number;
-    setPriority: (id: number, priority:number) => ActionTypeTodo;
+    setPriority: (id: number, priority:number) => Promise<ActionTypeTodo>;
 }
 
 const Priority: React.FC<IPriority> = ({priority=0, idItem=0, setPriority}) => {

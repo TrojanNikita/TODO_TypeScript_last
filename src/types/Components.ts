@@ -1,3 +1,22 @@
+
+
+import {ActionTypeTodo} from './../types/Action'
+
+import  {Todo}  from "../types";
+
+export interface ITodoList{
+    data:Array<Todo>;
+    fetchTodos:() => Promise<ActionTypeTodo>;
+}
+  
+  
+export type IItemContainer =  {
+    deleteTodo: (id: number) => Promise<ActionTypeTodo>;
+    toggleTodo: (id: number, done:Boolean) => Promise<ActionTypeTodo>;
+    editTodo: (id: number, label:string) => Promise<ActionTypeTodo>;
+    item: Todo;
+};
+
 //Интерфейс тудушки
 export interface ITodoListItem{
     idItem:number;

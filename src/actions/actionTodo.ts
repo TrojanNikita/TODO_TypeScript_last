@@ -42,25 +42,40 @@ export const editTodo = (id:number,label:string):PostActionThunk=>async dispatch
                 body: JSON.stringify({name:label})
         })
         .then(res=>res.json())
-        .then((data:any)=>dispatch({
+        .then((data:number)=>dispatch({
                 type: EDIT_TODO,
-                id:data.id,
+                id:data,
                 label:label
         }));
 }
 
 export const deleteTodo = (id:number):PostActionThunk=>async dispatch => {
-        return fetch(`/todo/del`, {
-                method: 'POST',
-                body: JSON.stringify({id})
-        })
+        return fetch(`/todo/${id}/del`)
         .then(res=>res.json())
-        .then((data:any)=>dispatch({
+        .then((data:number)=>dispatch({
                 type: DELETE_TODO,
-                id:data.id
+                id:data
         }));
 }
 
+export const setPriority = (id:number,priority:number):PostActionThunk=>async dispatch => {
+        return fetch(`/todo/${id}/priority`, {
+                method: 'POST',
+                body: JSON.stringify({priority:priority})
+        })
+        .then(res=>res.json())
+        .then((data:number)=>dispatch({
+                        type: SET_PRIORITY,
+                        id,
+                        priority:data
+        }));
+}
+
+// export const setPriority = (id:number,priority:number):ActionTypeTodo => ({
+//         type: SET_PRIORITY,
+//         id,
+//         priority    
+// })
 
 export const toggleAll = (flag:boolean):ActionTypeTodo => ({
         type: TOGGLE_ALL,
@@ -84,11 +99,7 @@ export const deleteCompleted = ():ActionTypeTodo => ({
 //         id    
 // })
 
-export const setPriority = (id:number,priority:number):ActionTypeTodo => ({
-        type: SET_PRIORITY,
-        id,
-        priority    
-})
+
 
 
 // export const todosLoading = () => ({
