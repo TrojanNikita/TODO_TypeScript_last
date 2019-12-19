@@ -1,14 +1,16 @@
 import {TODOS_LOADED,SET_PRIORITY,
   ADD_TODO,DELETE_COMPLETED_TODOS,
   DELETE_TODO,EDIT_TODO,TOGGLE_ALL,
-  TOGGLE_TODO} from '../constants/actions';
+  TOGGLE_TODO,
+  ERROR} from '../constants/actions';
 import  {StoreStructure}  from '../types';
 import {ActionTypeTodo} from '../types/Action'
 
 
 
 const initState: StoreStructure = {
-    todos: []
+    todos: [],
+    er:''
 };
 
 
@@ -22,35 +24,41 @@ export function TodoReduce (
           ...state,
           todos:[...action.todos]
         }
+      case ERROR:
+        return{
+          ...state,
+          er: action.er
+        }   
 
 
       case ADD_TODO:
           return {
+            ...state,
             todos:[
             ...state.todos,
             action.todo
             ]         
           }
-          case SET_PRIORITY:
-          return {
-            ...state,
-            todos: state.todos.map(el =>
-                  (el.id === action.id)
-                    ? {...el, priority: action.priority}
-                    : el
-              )
-      }    
-        case TOGGLE_TODO:
-          return {
-            ...state ,
-              todos:state.todos.map((todo) => {
-              if (todo.id === action.id) {
-                return Object.assign({}, todo, {
-                  done: !todo.done
-                })
-              }
-              return todo
-              }) 
+      case SET_PRIORITY:
+        return {
+          ...state,
+          todos: state.todos.map(el =>
+                (el.id === action.id)
+                  ? {...el, priority: action.priority}
+                  : el
+            )
+        }    
+      case TOGGLE_TODO:
+        return {
+          ...state ,
+            todos:state.todos.map((todo) => {
+            if (todo.id === action.id) {
+              return Object.assign({}, todo, {
+                done: !todo.done
+              })
+            }
+            return todo
+            }) 
         }
         case EDIT_TODO:
           return {

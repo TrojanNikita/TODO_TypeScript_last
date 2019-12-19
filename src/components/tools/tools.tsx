@@ -6,17 +6,16 @@ import { getDoneLength} from './../../selectors/todo-selectors';
 import {GlobalState} from '../../types';
 
 import {ActionTypeTodo} from '../../types/Action';
-import { bindActionCreators, Dispatch } from 'redux';
-import {toggleAll,deleteCompleted} from '../../actions/actionTodo';
+import {toggleAllThunk,deleteCompletedThunk} from '../../actions/actionTodo';
 
 
 type ToolsProps={
-    toggleAll:(flag:boolean)=>Promise<ActionTypeTodo>;
-    deleteCompleted:()=>Promise<ActionTypeTodo>;
+    toggleAllThunk:(flag:boolean)=>Promise<ActionTypeTodo>;
+    deleteCompletedThunk:()=>Promise<ActionTypeTodo>;
     doneCount:number;
 };
 
-const Tools: React.FC<ToolsProps>=({doneCount, toggleAll, deleteCompleted})=>{
+const Tools: React.FC<ToolsProps>=({doneCount, toggleAllThunk, deleteCompletedThunk})=>{
 
 
   //Возможно название первой кнопки нужно вынести в свойства
@@ -24,14 +23,14 @@ const Tools: React.FC<ToolsProps>=({doneCount, toggleAll, deleteCompleted})=>{
     return(
         <div className="tools btn-group">
           <button className="tools__leftbtn"
-                  onClick={()=>toggleAll(doneCount===0)}>
+                  onClick={()=>toggleAllThunk(doneCount===0)}>
                   {
                     (doneCount===0)?
                     'Select All':'Unselect All'
                   }
           </button>
           <button className="tools__rightbtn"
-                  onClick={deleteCompleted}>
+                  onClick={deleteCompletedThunk}>
                   Delete completed
           </button>
         </div>
@@ -45,8 +44,8 @@ const mapStateToProps=(state:GlobalState) => ({doneCount: getDoneLength(state)})
 
 
 const mapDispatchToProps ={
-      toggleAll,
-      deleteCompleted
+      toggleAllThunk,
+      deleteCompletedThunk
   };
 
 

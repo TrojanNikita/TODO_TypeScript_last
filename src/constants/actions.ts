@@ -9,6 +9,8 @@ export const SET_PRIORITY= 'SET_PRIORITY';
 export const TODOS_LOADED='TODOS_LOADED';
 export const TODOS_LOADING='TODOS_LOADING';
 
+export const ERROR='ERROR';
+
 
 
 export const SET_STATUS='SET_STATUS';

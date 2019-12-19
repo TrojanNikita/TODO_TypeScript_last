@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 //Типы
 import {ActionTypeTodo} from '../../types/Action';
 
-import {addTodo} from '../../actions/actionTodo';
+import {addTodoThunk} from '../../actions/actionTodo';
 
 //Стили
 import './add-item.scss';
@@ -14,7 +14,7 @@ import './add-item.scss';
 type AddProp = ReturnType<typeof mapDispatchToProps> ;
 
 
-const AddItem:React.FC<AddProp>=({addTodo})=> {
+const AddItem:React.FC<AddProp>=({addTodoThunk})=> {
 
   const [label, setLabel]=useState('');
 
@@ -26,7 +26,7 @@ const AddItem:React.FC<AddProp>=({addTodo})=> {
   const onSubmit=(e:React.FormEvent)=>{
     e.preventDefault(); //Браузер не будет перезагружать страницу
     if(label){
-      addTodo(label);
+      addTodoThunk(label);
       setLabel('');
     }
   };
@@ -47,7 +47,7 @@ const AddItem:React.FC<AddProp>=({addTodo})=> {
 const mapDispatchToProps = (dispatch: Dispatch<ActionTypeTodo>) =>
     bindActionCreators(
       {
-        addTodo
+        addTodoThunk
       },
       dispatch
 );

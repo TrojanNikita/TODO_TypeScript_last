@@ -4,7 +4,7 @@ import React,{useCallback} from 'react'
 import {connect} from 'react-redux';
 
 
-import {setPriority} from '../../actions/actionTodo';
+import {setPriorityThunk} from '../../actions/actionTodo';
 
 import {ActionTypeTodo} from '../../types/Action';
 
@@ -15,22 +15,14 @@ import './priority.scss';
 interface IPriority {
     priority:number;
     idItem:number;
-    setPriority: (id: number, priority:number) => Promise<ActionTypeTodo>;
+    setPriorityThunk: (id: number, priority:number) => Promise<ActionTypeTodo>;
 }
 
-const Priority: React.FC<IPriority> = ({priority=0, idItem=0, setPriority}) => {
+const Priority: React.FC<IPriority> = ({priority=0, idItem=0, setPriorityThunk}) => {
 
     const numbers:number[]=[1,2,3];
 
-//<i className={`${btnClass}__${count} fa fa-star-o`} />
-
     let btnClass='priority__li__btn';
-
-    // const onClickPriority=(count:number) =>()=> {
-    //         // btnClass+=`__${count}`; 
-    //         console.log(count);
-    //         setPriority(idItem,count)
-    //     }
 
 
     const onClickPriority=useCallback(
@@ -38,13 +30,13 @@ const Priority: React.FC<IPriority> = ({priority=0, idItem=0, setPriority}) => {
             if(priority!==count){
                 // btnClass+=`__${count}`; 
                 console.log(count);
-                setPriority(idItem,count);
+                setPriorityThunk(idItem,count);
             }
             else{
-                setPriority(idItem,0);
+                setPriorityThunk(idItem,0);
             }
         },
-        [setPriority,idItem,priority],
+        [setPriorityThunk,idItem,priority],
     )
 
     const stars = numbers.map((count: number) => {
@@ -69,7 +61,7 @@ const Priority: React.FC<IPriority> = ({priority=0, idItem=0, setPriority}) => {
 
 
 const mapDispatchToProps = {  
-    setPriority 
+    setPriorityThunk 
 };
 
 

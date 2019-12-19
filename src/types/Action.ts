@@ -37,6 +37,10 @@ interface ISetPriority{
     id:number;
     priority:number;
 }
+interface IError{
+    type: "ERROR";
+    er:string;
+}
 
 
 //Union action for todos
@@ -44,7 +48,7 @@ export type ActionTypeTodo= IAddTodo|
 IDeleteCompleted|IDeleteTodo|
 IEditTodo|ISetPriority|
 ITodosLoaded|IToggleAll|
-IToggleTodo;
+IToggleTodo|IError;
 
 
 //T- тип параметра вложенной функции

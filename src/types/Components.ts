@@ -11,9 +11,9 @@ export interface ITodoList{
   
   
 export type IItemContainer =  {
-    deleteTodo: (id: number) => Promise<ActionTypeTodo>;
-    toggleTodo: (id: number, done:Boolean) => Promise<ActionTypeTodo>;
-    editTodo: (id: number, label:string) => Promise<ActionTypeTodo>;
+    deleteTodoThunk: (id: number) => Promise<ActionTypeTodo>;
+    toggleTodoThunk: (id: number, done:Boolean) => Promise<ActionTypeTodo>;
+    editTodoThunk: (id: number, label:string) => Promise<ActionTypeTodo>;
     item: Todo;
 };
 

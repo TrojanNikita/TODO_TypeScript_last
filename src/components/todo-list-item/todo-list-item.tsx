@@ -2,7 +2,7 @@ import React, {  useState,useRef, FormEvent, useCallback } from "react"
 
 import {connect} from 'react-redux'
 
-import {toggleTodo,deleteTodo,editTodo} from '../../actions/actionTodo'
+import {toggleTodoThunk,deleteTodoThunk,editTodoThunk} from '../../actions/actionTodo'
 
 //типы контейнера и view
 import  {IItemContainer,ITodoListItem}  from "../../types/Components"
@@ -52,7 +52,7 @@ const TodoListItem:React.FC<ITodoListItem>=
 
 
 //Контейнеру поступает только тудушка: id, label, done
-const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTodo,editTodo})=>{
+const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodoThunk,toggleTodoThunk,editTodoThunk})=>{
 
     //Включение режима редактирования
     //По-умолчанию выкл
@@ -85,7 +85,7 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
         if(editMode){
             //если после изменения пустая тудушка, удаляем ее
             newLabel===''?
-                  deleteTodo(item.id):editTodo(item.id,newLabel);
+                  deleteTodoThunk(item.id):editTodoThunk(item.id,newLabel);
             //меняем режим по нажатию кнопки редактирования 
             setEditMode(false);
         }else{ 
@@ -106,8 +106,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 
 //Callbacks
     const onInputClick=useCallback(()=>{
-        toggleTodo(item.id, item.done)
-    },[toggleTodo,item.id,item.done])
+        toggleTodoThunk(item.id, item.done)
+    },[toggleTodoThunk,item.id,item.done])
 
     const onSubmitItem=useCallback(((event:FormEvent)=>{
         if(event)
@@ -120,8 +120,8 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
     },[editChange])
 
     const onDeleteClick=useCallback(()=>{
-        deleteTodo(item.id)
-    },[deleteTodo,item.id])
+        deleteTodoThunk(item.id)
+    },[deleteTodoThunk,item.id])
 
 
 
@@ -155,9 +155,9 @@ const TodoListItemContainer:React.FC<IItemContainer>=({item,deleteTodo,toggleTod
 //Контейнер получает тужушку из родительского компонента
 //Но передает различные действия
 const mapDispatchToProps = {  
-      toggleTodo,
-      deleteTodo,
-      editTodo 
+      toggleTodoThunk,
+      deleteTodoThunk,
+      editTodoThunk 
 };
 
 
