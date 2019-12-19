@@ -2,9 +2,6 @@ import { createSelector } from 'reselect';
 
 
 import {GlobalState} from '../types';
-
-import {predPriority} from './../constants/filter-mode'
-import {predDone} from './../constants/status'
 export const getTodos = (state:GlobalState) => state.TodoReduce.todos;
 
 
@@ -15,13 +12,6 @@ export const getStatus = (state:GlobalState) => state.ModeStatusReducer.status;
 
 
 
-// const sortByPriority=(a:number ,b:number, mode:string)=>{
-// if(mode='Asc') 
-//         return a-b;
-// else if(mode='Desc')
-//         return b-a;    
-// else return 0;            
-// }
 
 export const getTodo=(state:GlobalState, id:number)=>state.TodoReduce.todos[id];
 
@@ -37,11 +27,25 @@ export const getAllTodos = createSelector(
             newArray=[...newArray].sort((a,b)=>{            
                 return b.priority-a.priority;
         })
-        return   newArray.filter(({done})=>predDone(done,status)).filter(({priority})=>predPriority(priority,filter_mode))
+            return   newArray.filter(({done})=>{
+                if(status===ACTIVE)
+                    return done===false;
+                else if(status===DONE)
+                    return done===true;
+                else return true                
+            }).filter(({priority})=>{
+                if(mode===NONE)
+                    return priority===0;
+                else if (mode===SMALL)
+                    return priority===1;
+                else if (mode===MIDLE)
+                    return priority===2;
+                else if(mode===HIGH)
+                    return priority===3;
+                else return true;    
+            })
     }
 );
-
-
 
 export const getDoneLength=createSelector(
     getTodos,
