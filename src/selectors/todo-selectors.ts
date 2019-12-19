@@ -2,6 +2,9 @@ import { createSelector } from 'reselect';
 
 
 import {GlobalState} from '../types';
+
+import { NONE, SMALL, MIDLE, HIGH} from './../constants/filter-mode'
+import { ACTIVE, DONE} from './../constants/status'
 export const getTodos = (state:GlobalState) => state.TodoReduce.todos;
 
 
