@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import TodoListItem from '../todo-list-item';
 
 //fetchTodos, data
@@ -11,11 +11,7 @@ import './todo-list.scss';
 
 
 
-const TodoList= ({data,fetchTodos}:ITodoList) => {
-
-  useEffect(() => {
-      fetchTodos()
-    }, [fetchTodos])
+const TodoList= ({data}:ITodoList) => {
 
 
   const elements = data.map((item) => {

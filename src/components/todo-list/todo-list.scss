@@ -17,7 +17,6 @@
     height: $heigth_li;
     @include item-border();
     @include color_btn($todo_color,$color_title);
-     width: 100%;
-    // background-color: white;  
+     width: 100%; 
   }
 }

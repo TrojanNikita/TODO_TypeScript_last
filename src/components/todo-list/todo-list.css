@@ -1,0 +1,19 @@
+.todos {
+  margin-top: 9px;
+  margin-left: 35px;
+  margin-right: 35px;
+  list-style: none;
+  background-color: #ead9f5;
+}
+
+.todos__li {
+  padding: 0;
+  margin: 0;
+  height: 100px;
+  border: none;
+  outline: none;
+  color: black;
+  background-color: #efdefa;
+  width: 100%;
+}
+/*# sourceMappingURL=todo-list.css.map */

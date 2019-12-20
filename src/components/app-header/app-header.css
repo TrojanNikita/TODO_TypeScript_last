@@ -1,0 +1,32 @@
+.header {
+  height: 100px;
+}
+
+.header__title {
+  display: inline-block;
+  font-size: 3.0rem;
+  width: 35%;
+  height: 50%;
+  color: black;
+  font-weight: 550;
+}
+
+.header__subtitle {
+  display: inline-block;
+  width: 50%;
+  font-size: 1rem;
+  color: grey;
+  font-weight: 550;
+}
+
+.header__right {
+  margin: 0;
+  margin-bottom: 50px;
+  float: right;
+  height: 10%;
+  width: 10%;
+  font-size: 1rem;
+  color: grey;
+  font-weight: 550;
+}
+/*# sourceMappingURL=app-header.css.map */

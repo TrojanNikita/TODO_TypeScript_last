@@ -2,7 +2,8 @@ import {TODOS_LOADED,SET_PRIORITY,
   ADD_TODO,DELETE_COMPLETED_TODOS,
   DELETE_TODO,EDIT_TODO,TOGGLE_ALL,
   TOGGLE_TODO,
-  ERROR} from '../constants/actions';
+  ERROR,
+  LOAD} from '../constants/actions';
 import  {StoreStructure}  from '../types';
 import {ActionTypeTodo} from '../types/Action'
 
@@ -10,7 +11,8 @@ import {ActionTypeTodo} from '../types/Action'
 
 const initState: StoreStructure = {
     todos: [],
-    er:''
+    error:false,
+    loading:false
 };
 
 
@@ -22,14 +24,22 @@ export function TodoReduce (
       case TODOS_LOADED:
         return{
           ...state,
+          loading:false,
+          error:false,  
           todos:[...action.todos]
         }
       case ERROR:
         return{
           ...state,
-          er: action.er
+          loading:false,
+          error:true
         }   
-
+        case LOAD:
+          return{
+            ...state,
+            error:false,  
+            loading:true
+          }   
 
       case ADD_TODO:
           return {

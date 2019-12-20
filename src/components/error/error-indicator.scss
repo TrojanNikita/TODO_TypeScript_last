@@ -1,0 +1,15 @@
+@import './../../constants/const';
+
+
+.error-indicator{
+    margin-top: 9px;
+    margin-left: $list-padding;
+    margin-right: $list-padding;
+    list-style: none;
+    background-color: $primary-background - 5;  
+
+    height: $heigth_li;
+    text-align: center;
+    @include item-border();
+
+}

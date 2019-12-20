@@ -10,6 +10,7 @@ export const TODOS_LOADED='TODOS_LOADED';
 export const TODOS_LOADING='TODOS_LOADING';
 
 export const ERROR='ERROR';
+export const LOAD='LOAD';
 
 
 

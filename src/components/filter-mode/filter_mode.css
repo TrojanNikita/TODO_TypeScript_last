@@ -1,0 +1,28 @@
+.filter-mode {
+  width: 100%;
+}
+
+.filter-mode__btn {
+  display: inline-block;
+  color: black;
+  background-color: #ead9f5;
+  border: none;
+  outline: none;
+}
+
+.filter-mode__btn:focus {
+  border: none;
+  outline: none;
+}
+
+.filter-mode__content {
+  cursor: default;
+  width: 40%;
+  text-align: center;
+  display: inline-block;
+  color: black;
+  background-color: #ead9f5;
+  border: none;
+  outline: none;
+}
+/*# sourceMappingURL=filter_mode.css.map */

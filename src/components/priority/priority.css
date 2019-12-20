@@ -1,0 +1,49 @@
+.priority {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 40%;
+}
+
+.priority__li {
+  color: black;
+  background-color: #efdefa;
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+}
+
+.priority__li__btn {
+  color: black;
+  background-color: #efdefa;
+  border: none;
+  outline: none;
+}
+
+.priority__li__btn::before {
+  font-family: 'FontAwesome';
+  content: "\f006";
+}
+
+.priority__li__btn__active {
+  color: black;
+  background-color: #efdefa;
+  border: none;
+  outline: none;
+}
+
+.priority__li__btn__active:focus {
+  border: none;
+  outline: none;
+}
+
+.priority__li__btn__active::before {
+  font-family: 'FontAwesome';
+  content: "\f005";
+}
+
+.priority__li__btn:focus {
+  border: none;
+  outline: none;
+}
+/*# sourceMappingURL=priority.css.map */

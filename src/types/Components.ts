@@ -6,7 +6,6 @@ import  {Todo}  from "../types";
 
 export interface ITodoList{
     data:Array<Todo>;
-    fetchTodos:() => Promise<ActionTypeTodo>;
 }
   
   

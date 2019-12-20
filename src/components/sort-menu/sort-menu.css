@@ -1,0 +1,79 @@
+.sort-menu__btn, .sort-menu__btn--active {
+  text-align: left;
+  color: black;
+  background-color: #ead9f5;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+
+.sort-menu__btn:focus, .sort-menu__btn--active:focus {
+  border: none;
+  outline: none;
+}
+
+.sort-menu__btn:hover, .sort-menu__btn--active:hover {
+  border-radius: 5px;
+  color: black;
+  background-color: #e0cfeb;
+}
+
+.sort-menu__btn--active {
+  border-radius: 5px;
+  color: black;
+  background-color: #ead9f5;
+}
+
+.sort-menu__modes {
+  -webkit-box-shadow: 0 0 0 3px #dac9f5;
+          box-shadow: 0 0 0 3px #dac9f5;
+  -webkit-box-shadow: 0 0 0 6px #dccbf7;
+          box-shadow: 0 0 0 6px #dccbf7;
+  -webkit-box-shadow: 0 0 0 9px #decdf9;
+          box-shadow: 0 0 0 9px #decdf9;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  margin-top: -2.4rem;
+  margin-left: 10rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100px;
+  background-color: #d8c7f3;
+  z-index: 101;
+}
+
+.sort-menu__modes__btn {
+  width: 100%;
+  color: black;
+  background-color: #d8c7f3;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #c4b3df;
+}
+
+.sort-menu__modes__btn:focus {
+  border: none;
+  outline: none;
+}
+
+.sort-menu__modes__btn:hover {
+  width: 100%;
+  color: black;
+  background-color: #ead9f5;
+}
+
+.sort-menu__modes__btn--active {
+  width: 100%;
+  color: black;
+  background-color: #e7d6ff;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #c4b3df;
+}
+
+.sort-menu__modes__btn--active:focus {
+  border: none;
+  outline: none;
+}
+/*# sourceMappingURL=sort-menu.css.map */

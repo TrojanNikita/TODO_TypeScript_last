@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useCallback} from 'react';
 import { connect } from 'react-redux';
 import './tools.scss';
 
@@ -18,12 +18,20 @@ type ToolsProps={
 const Tools: React.FC<ToolsProps>=({doneCount, toggleAllThunk, deleteCompletedThunk})=>{
 
 
+  const clickOnSelect=useCallback(
+    () => {
+      console.log(doneCount===0)
+      toggleAllThunk(doneCount===0)
+    },
+    [doneCount,toggleAllThunk],
+  )
+
   //Возможно название первой кнопки нужно вынести в свойства
   //Т,к, по сути меняется только оно
     return(
         <div className="tools btn-group">
           <button className="tools__leftbtn"
-                  onClick={()=>toggleAllThunk(doneCount===0)}>
+                  onClick={clickOnSelect}>
                   {
                     (doneCount===0)?
                     'Select All':'Unselect All'

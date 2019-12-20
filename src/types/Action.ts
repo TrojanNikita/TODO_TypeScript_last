@@ -39,7 +39,9 @@ interface ISetPriority{
 }
 interface IError{
     type: "ERROR";
-    er:string;
+}
+interface ILoad{
+    type: "LOAD";
 }
 
 
@@ -48,7 +50,7 @@ export type ActionTypeTodo= IAddTodo|
 IDeleteCompleted|IDeleteTodo|
 IEditTodo|ISetPriority|
 ITodosLoaded|IToggleAll|
-IToggleTodo|IError;
+IToggleTodo|IError|ILoad;
 
 
 //T- тип параметра вложенной функции
