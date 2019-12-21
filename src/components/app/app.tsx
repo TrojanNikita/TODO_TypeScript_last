@@ -20,7 +20,6 @@ import Navigation from '../navigation/navigation';
 import AddItem from '../add-item/add-item';
 
 
-import Tools from '../tools/tools';
 
 
 import './app.scss';
@@ -42,7 +41,6 @@ const App : React.FC= () => {
                               key={route.path} />))
                   }
             </Switch>
-            <Tools />
         </div>
       </Router>
     </div>

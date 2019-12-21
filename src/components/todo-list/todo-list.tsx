@@ -4,6 +4,7 @@ import TodoListItem from '../todo-list-item';
 //fetchTodos, data
 import {ITodoList} from '../../types/Components'
 
+import Tools from '../tools/tools';
 import './todo-list.scss';
 
 
@@ -24,9 +25,13 @@ const TodoList= ({data}:ITodoList) => {
   });
 
   return (
-    <ul className="todos list-group">
-      { elements }
-    </ul>
+    <div>
+      <ul className="todos list-group">
+        { elements }
+      </ul>
+
+      <Tools />
+    </div>
   );
 };
 

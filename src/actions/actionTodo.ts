@@ -119,7 +119,7 @@ export const fetchTodos=():GetActionThunk=>async dispatch => {
         try {
                 return await fetchData("/todos")
                .then((data:IGet[])=> dispatch(todosLoaded(data.map(g=>_transformTodo(g)))));
-        } catch (response) {
+        } catch (error) {
                 return   dispatch(handleError())               
         }
 };
