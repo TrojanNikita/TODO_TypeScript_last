@@ -8,7 +8,7 @@ import {Todo} from './../types/Todo'
 
 //Actions
 export const handleError = ():ActionTypeTodo => ({    
-    type: ERROR
+    type: ERROR 
 });
 export const requestToServer = ():ActionTypeTodo => ({    
     type: LOAD

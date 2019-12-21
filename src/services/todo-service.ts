@@ -1,5 +1,5 @@
 
-export const  fetchData=async <T>(url:string, method:string="GET",param?:T)=>{
+export const  fetchData=async <T>(url:string, method:string="GET",param?:T) => {
   return fetch(url,{
     method: method,
     body: JSON.stringify(param)
@@ -7,6 +7,7 @@ export const  fetchData=async <T>(url:string, method:string="GET",param?:T)=>{
         if (res.status >= 200 && res.status < 300) {  
            return Promise.resolve(res)  
         } else {  
+          
           return Promise.reject(new Error(res.statusText))  
         }  
       }).then(res=>res.json());  
