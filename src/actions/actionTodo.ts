@@ -12,6 +12,7 @@ import {fetchData} from '../services/todo-service';
 //ThunkActions
 export const addTodoThunk= (label:string):PostActionThunk=>async dispatch => {
         try {
+                
                 const data= await fetchData('/todos/new','POST',{name:label});
                 return dispatch(addTodo(_transformTodo(data)));
         } catch (data) {
@@ -22,7 +23,7 @@ export const addTodoThunk= (label:string):PostActionThunk=>async dispatch => {
 
 export const toggleTodoThunk = (id:number, done:Boolean):PostActionThunk=>async dispatch => {
         try {
-                const data:number= await fetchData(`/todos/${id}/change`,'PUT',{done})
+                const data:number= await fetchData(`/todos/${id}/status/${done}`,'PUT',{done})
                 return dispatch(toggleTodo(data));
         } catch (response) {
                 return   dispatch(handleError())               
@@ -31,7 +32,7 @@ export const toggleTodoThunk = (id:number, done:Boolean):PostActionThunk=>async 
 }
 export const editTodoThunk = (id:number,label:string):PostActionThunk=>async dispatch => {
         try {
-                const data:number= await fetchData(`/todos/${id}`,'PUT',{name:label})
+                const data:number= await fetchData(`/todos/${id}/name/${label}`,'PUT')
                 return dispatch(editTodo(data,label));
         } catch (response) {
                 return   dispatch(handleError())               
@@ -49,8 +50,8 @@ export const deleteTodoThunk = (id:number):PostActionThunk=>async dispatch => {
 }
 export const setPriorityThunk = (id:number,priority:number):PostActionThunk=>async dispatch => {
         try {
-                return await fetchData(`/todos/${id}/priority`,'PUT',{priority})                
-                .then((priority:number)=>dispatch(setPriority(id,priority)));
+                const data= await fetchData(`/todos/${id}/priority/${priority}`,'PUT',{priority})                
+                return dispatch(setPriority(id,data));
         } catch (response) {
                 return   dispatch(handleError())               
         }
@@ -58,7 +59,7 @@ export const setPriorityThunk = (id:number,priority:number):PostActionThunk=>asy
 }
 export const toggleAllThunk = (flag:boolean):PostActionThunk=>async dispatch => {
         try {
-                const data:boolean= await fetchData(`/todos/update`,'PUT',{done:!flag});
+                const data:boolean= await fetchData(`/todos/update/${!flag}`,'PUT');
                 return dispatch(toggleAll(!data));
         } catch (response) {
                 return   dispatch(handleError())               
@@ -66,7 +67,7 @@ export const toggleAllThunk = (flag:boolean):PostActionThunk=>async dispatch => 
 }
 export const deleteCompletedThunk = ():PostActionThunk=>async dispatch => {
         try {
-                await fetchData(`/todos`,'DELETE',{done:true})
+                await fetchData(`/todos/status/true`,'DELETE')
                 return dispatch(deleteCompleted());
         } catch (response) {
                 return   dispatch(handleError())               
