@@ -3,6 +3,7 @@ import React from 'react';
 // import {getActiveLength} from './../../selectors/todo-selectors'
 // import {GlobalState} from '../../types';
 
+import AuthButton from './../../authentication/auth_button';
 
 
 import './app-header.scss';
@@ -29,7 +30,7 @@ const AppHeader: React.FC=()=>{
            <FilterMode/>
         </div>
         {/* <div className='header__right'><SortMenu/></div> */}
-         
+         <div className='header__login'><AuthButton/></div>
 
 
     </div>

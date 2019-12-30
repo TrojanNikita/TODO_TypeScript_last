@@ -18,19 +18,26 @@
     
     &__subtitle {
       display: inline-block;
-      width: 50%;
+      width: 35%;
       font-size: 1rem;
       color: $color_subtitle;
       font-weight: $font-weight-subheader;
     }
-    &__right {
-      margin: 0;
-      margin-bottom: 50px;
-      float: right;
-      height: 10%;
-      width: 10%;
+    &__login {
+      display: inline-block;
+      width: 20%;
       font-size: 1rem;
       color: $color_subtitle;
       font-weight: $font-weight-subheader;
     }
+    // &__right {
+    //   margin: 0;
+    //   margin-bottom: 50px;
+    //   float: right;
+    //   height: 10%;
+    //   width: 10%;
+    //   font-size: 1rem;
+    //   color: $color_subtitle;
+    //   font-weight: $font-weight-subheader;
+    // }
 }
